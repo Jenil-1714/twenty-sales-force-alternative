@@ -1,0 +1,407 @@
+[
+  {
+    "name": "Life Insurance Corporation of India",
+    "shortName": "LIC",
+    "category": "Life",
+    "irdaiLicenseNumber": "512",
+    "claimSettlementRatio": 98.7,
+    "portalUrl": "https://agent.licindia.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "HDFC Life Insurance Company Limited",
+    "shortName": "HDFC Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "101",
+    "claimSettlementRatio": 99.4,
+    "portalUrl": "https://partners.hdfclife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "ICICI Prudential Life Insurance Company Limited",
+    "shortName": "ICICI Prudential Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "105",
+    "claimSettlementRatio": 98.6,
+    "portalUrl": "https://iciciprulife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "SBI Life Insurance Company Limited",
+    "shortName": "SBI Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "111",
+    "claimSettlementRatio": 96.5,
+    "portalUrl": "https://sbilife.co.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Max Life Insurance Company Limited",
+    "shortName": "Max Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "104",
+    "claimSettlementRatio": 99.5,
+    "portalUrl": "https://agent.maxlifeinsurance.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Bajaj Allianz Life Insurance Company Limited",
+    "shortName": "Bajaj Allianz Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "116",
+    "claimSettlementRatio": 98.0,
+    "portalUrl": "https://partners.bajajallianzlife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Tata AIA Life Insurance Company Limited",
+    "shortName": "Tata AIA Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "110",
+    "claimSettlementRatio": 99.0,
+    "portalUrl": "https://tataaia.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "PNB MetLife India Insurance Company Limited",
+    "shortName": "PNB MetLife",
+    "category": "Life",
+    "irdaiLicenseNumber": "117",
+    "claimSettlementRatio": 97.2,
+    "portalUrl": "https://pnbmetlife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Kotak Mahindra Life Insurance Company Limited",
+    "shortName": "Kotak Mahindra Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "107",
+    "claimSettlementRatio": 98.5,
+    "portalUrl": "https://kotaklife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Aditya Birla Sun Life Insurance Company Limited",
+    "shortName": "Aditya Birla Sun Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "109",
+    "claimSettlementRatio": 98.1,
+    "portalUrl": "https://lifeinsurance.adityabirlacapital.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Bandhan Life Insurance Limited",
+    "shortName": "Bandhan Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "138",
+    "claimSettlementRatio": 96.0,
+    "portalUrl": "https://bandhanlife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Canara HSBC Life Insurance Company Limited",
+    "shortName": "Canara HSBC Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "136",
+    "claimSettlementRatio": 98.4,
+    "portalUrl": "https://canarahsbclife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Edelweiss Tokio Life Insurance Company Limited",
+    "shortName": "Edelweiss Tokio Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "147",
+    "claimSettlementRatio": 97.8,
+    "portalUrl": "https://edelweisstokio.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Exide Life Insurance Company Limited",
+    "shortName": "Exide Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "114",
+    "claimSettlementRatio": 99.1,
+    "portalUrl": "https://exidelife.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Future Generali India Life Insurance Company Limited",
+    "shortName": "Future Generali Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "133",
+    "claimSettlementRatio": 96.8,
+    "portalUrl": "https://life.futuregenerali.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "IndiaFirst Life Insurance Company Limited",
+    "shortName": "IndiaFirst Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "143",
+    "claimSettlementRatio": 96.9,
+    "portalUrl": "https://indiafirstlife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Pramerica Life Insurance Limited",
+    "shortName": "Pramerica Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "140",
+    "claimSettlementRatio": 98.2,
+    "portalUrl": "https://pramericalife.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Sahara India Life Insurance Company Limited",
+    "shortName": "Sahara Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "127",
+    "claimSettlementRatio": 90.5,
+    "portalUrl": "https://saharalife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Shriram Life Insurance Company Limited",
+    "shortName": "Shriram Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "128",
+    "claimSettlementRatio": 96.5,
+    "portalUrl": "https://shriramlife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Star Union Dai-ichi Life Insurance Company Limited",
+    "shortName": "Star Union Dai-ichi Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "142",
+    "claimSettlementRatio": 97.4,
+    "portalUrl": "https://sudlife.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Reliance Nippon Life Insurance Company Limited",
+    "shortName": "Reliance Nippon Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "121",
+    "claimSettlementRatio": 98.7,
+    "portalUrl": "https://reliancenipponlife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Aviva Life Insurance Company India Limited",
+    "shortName": "Aviva Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "122",
+    "claimSettlementRatio": 98.0,
+    "portalUrl": "https://avivaindia.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Ageas Federal Life Insurance Company Limited",
+    "shortName": "Ageas Federal Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "135",
+    "claimSettlementRatio": 97.0,
+    "portalUrl": "https://ageasfederal.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Bharti AXA Life Insurance Company Limited",
+    "shortName": "Bharti AXA Life",
+    "category": "Life",
+    "irdaiLicenseNumber": "130",
+    "claimSettlementRatio": 99.1,
+    "portalUrl": "https://bhartiaxalife.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "The New India Assurance Company Limited",
+    "shortName": "New India Assurance",
+    "category": "General",
+    "irdaiLicenseNumber": "190",
+    "claimSettlementRatio": 95.5,
+    "portalUrl": "https://newindia.co.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "United India Insurance Company Limited",
+    "shortName": "United India Insurance",
+    "category": "General",
+    "irdaiLicenseNumber": "545",
+    "claimSettlementRatio": 94.0,
+    "portalUrl": "https://uiic.co.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "The Oriental Insurance Company Limited",
+    "shortName": "Oriental Insurance",
+    "category": "General",
+    "irdaiLicenseNumber": "556",
+    "claimSettlementRatio": 93.5,
+    "portalUrl": "https://orientalinsurance.org.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "National Insurance Company Limited",
+    "shortName": "National Insurance",
+    "category": "General",
+    "irdaiLicenseNumber": "58",
+    "claimSettlementRatio": 92.0,
+    "portalUrl": "https://nationalinsurance.nic.co.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "ICICI Lombard General Insurance Company Limited",
+    "shortName": "ICICI Lombard",
+    "category": "General",
+    "irdaiLicenseNumber": "115",
+    "claimSettlementRatio": 97.8,
+    "portalUrl": "https://icicilombard.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "HDFC ERGO General Insurance Company Limited",
+    "shortName": "HDFC ERGO",
+    "category": "General",
+    "irdaiLicenseNumber": "146",
+    "claimSettlementRatio": 98.2,
+    "portalUrl": "https://hdfcergo.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Bajaj Allianz General Insurance Company Limited",
+    "shortName": "Bajaj Allianz General",
+    "category": "General",
+    "irdaiLicenseNumber": "113",
+    "claimSettlementRatio": 98.0,
+    "portalUrl": "https://bajajallianz.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Tata AIG General Insurance Company Limited",
+    "shortName": "Tata AIG General",
+    "category": "General",
+    "irdaiLicenseNumber": "108",
+    "claimSettlementRatio": 97.5,
+    "portalUrl": "https://tataaig.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Reliance General Insurance Company Limited",
+    "shortName": "Reliance General",
+    "category": "General",
+    "irdaiLicenseNumber": "103",
+    "claimSettlementRatio": 96.0,
+    "portalUrl": "https://reliancegeneral.co.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Future Generali India Insurance Company Limited",
+    "shortName": "Future Generali General",
+    "category": "General",
+    "irdaiLicenseNumber": "132",
+    "claimSettlementRatio": 95.8,
+    "portalUrl": "https://general.futuregenerali.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Cholamandalam MS General Insurance Company Limited",
+    "shortName": "Cholamandalam MS",
+    "category": "General",
+    "irdaiLicenseNumber": "123",
+    "claimSettlementRatio": 94.5,
+    "portalUrl": "https://cholainsurance.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "IFFCO Tokio General Insurance Company Limited",
+    "shortName": "Iffco Tokio",
+    "category": "General",
+    "irdaiLicenseNumber": "106",
+    "claimSettlementRatio": 96.2,
+    "portalUrl": "https://iffcotokio.co.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Star Health and Allied Insurance Company Limited",
+    "shortName": "Star Health",
+    "category": "StandaloneHealth",
+    "irdaiLicenseNumber": "129",
+    "claimSettlementRatio": 99.0,
+    "portalUrl": "https://starhealth.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Care Health Insurance Limited",
+    "shortName": "Care Health",
+    "category": "StandaloneHealth",
+    "irdaiLicenseNumber": "148",
+    "claimSettlementRatio": 95.2,
+    "portalUrl": "https://careinsurance.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "ManipalCigna Health Insurance Company Limited",
+    "shortName": "ManipalCigna",
+    "category": "StandaloneHealth",
+    "irdaiLicenseNumber": "151",
+    "claimSettlementRatio": 98.1,
+    "portalUrl": "https://manipalcigna.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Niva Bupa Health Insurance Company Limited",
+    "shortName": "Niva Bupa",
+    "category": "StandaloneHealth",
+    "irdaiLicenseNumber": "145",
+    "claimSettlementRatio": 96.4,
+    "portalUrl": "https://nivabupa.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Aditya Birla Health Insurance Company Limited",
+    "shortName": "Aditya Birla Health",
+    "category": "StandaloneHealth",
+    "irdaiLicenseNumber": "153",
+    "claimSettlementRatio": 97.0,
+    "portalUrl": "https://adityabirlahealth.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "SBI General Insurance Company Limited",
+    "shortName": "SBI General",
+    "category": "Health",
+    "irdaiLicenseNumber": "144",
+    "claimSettlementRatio": 95.0,
+    "portalUrl": "https://sbigeneral.in/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Go Digit General Insurance Limited",
+    "shortName": "Go Digit",
+    "category": "Health",
+    "irdaiLicenseNumber": "158",
+    "claimSettlementRatio": 97.2,
+    "portalUrl": "https://godigit.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Acko General Insurance Limited",
+    "shortName": "Acko",
+    "category": "Health",
+    "irdaiLicenseNumber": "157",
+    "claimSettlementRatio": 96.5,
+    "portalUrl": "https://acko.com/",
+    "paymentCycle": "Monthly"
+  },
+  {
+    "name": "Magma HDI General Insurance Company Limited",
+    "shortName": "Magma HDI",
+    "category": "Health",
+    "irdaiLicenseNumber": "149",
+    "claimSettlementRatio": 94.0,
+    "portalUrl": "https://magmahdi.com/",
+    "paymentCycle": "Monthly"
+  }
+]
