@@ -3,10 +3,20 @@
   "version": "0.1.0",
   "description": "Insurance Growth OS CRM application.",
   "license": "AGPL-3.0",
-  "engines": { "node": "^24.5.0", "npm": "please-use-yarn", "yarn": ">=4.0.2" },
-  "keywords": ["twenty-app"],
+  "engines": {
+    "node": "^24.5.0",
+    "npm": "please-use-yarn",
+    "yarn": ">=4.0.2"
+  },
+  "keywords": [
+    "twenty-app"
+  ],
   "packageManager": "yarn@4.13.0",
-  "scripts": { "twenty": "twenty", "lint": "eslint src/", "test": "vitest run" },
+  "scripts": {
+    "twenty": "twenty",
+    "lint": "eslint src/",
+    "test": "vitest run"
+  },
   "devDependencies": {
     "@types/node": "^24.7.2",
     "@types/react": "^18.2.0",

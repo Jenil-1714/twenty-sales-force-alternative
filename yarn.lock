@@ -9044,6 +9044,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@insurecrm/insure-crm-app@workspace:packages/insure-crm-app":
+  version: 0.0.0-use.local
+  resolution: "@insurecrm/insure-crm-app@workspace:packages/insure-crm-app"
+  dependencies:
+    "@types/node": "npm:^24.7.2"
+    "@types/react": "npm:^18.2.0"
+    react: "npm:^18.2.0"
+    twenty-client-sdk: "npm:^2.16.0"
+    twenty-sdk: "npm:^2.16.0"
+    typescript: "npm:^5.9.3"
+    vitest: "npm:^4.0.0"
+  languageName: unknown
+  linkType: soft
+
 "@internationalized/date@npm:3.10.0":
   version: 3.10.0
   resolution: "@internationalized/date@npm:3.10.0"
@@ -20990,6 +21004,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^24.7.2":
+  version: 24.13.3
+  resolution: "@types/node@npm:24.13.3"
+  dependencies:
+    undici-types: "npm:~7.18.0"
+  checksum: 10c0/a5bc08f49b9581dcdca90e02cd77197a3c799840807664942e5cd5161a553d4d2ae8064f7e3294410d748d7d098b5c1848be7fa50c06f29c4193ab16be4e59eb
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^25.2.3":
   version: 25.3.0
   resolution: "@types/node@npm:25.3.0"
@@ -21142,7 +21165,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prop-types@npm:^15.7.15":
+"@types/prop-types@npm:*, @types/prop-types@npm:^15.7.15":
   version: 15.7.15
   resolution: "@types/prop-types@npm:15.7.15"
   checksum: 10c0/b59aad1ad19bf1733cf524fd4e618196c6c7690f48ee70a327eb450a42aab8e8a063fbe59ca0a5701aebe2d92d582292c0fb845ea57474f6a15f6994b0e260b2
@@ -21212,6 +21235,16 @@ __metadata:
   dependencies:
     csstype: "npm:^3.0.2"
   checksum: 10c0/632fd20ee176e55801a61c5f854141b043571a3e363ef106b047b766a813a12735cbb37abb3d61d126346979f530f2ed269a60c8ef3cdee54e5e9fe4174e5dad
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.0":
+  version: 18.3.31
+  resolution: "@types/react@npm:18.3.31"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.2.2"
+  checksum: 10c0/44180549dd045f536ececd39e39aacdf828e76adc1c4a90b132f453e23cc370c4648d9102ae401172ebd8fd8b1977a901a39e214e53ec77171b27514b588c179
   languageName: node
   linkType: hard
 
@@ -37511,7 +37544,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -44219,6 +44252,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react@npm:^18.2.0":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
+  dependencies:
+    loose-envify: "npm:^1.1.0"
+  checksum: 10c0/283e8c5efcf37802c9d1ce767f302dd569dd97a70d9bb8c7be79a789b9902451e0d16334b05d73299b20f048cbc3c7d288bbbde10b701fa194e2089c237dbea3
+  languageName: node
+  linkType: hard
+
 "react@npm:^19.2.0":
   version: 19.2.7
   resolution: "react@npm:19.2.7"
@@ -49293,7 +49335,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"twenty-client-sdk@workspace:*, twenty-client-sdk@workspace:packages/twenty-client-sdk":
+"twenty-client-sdk@npm:^2.16.0, twenty-client-sdk@workspace:*, twenty-client-sdk@workspace:packages/twenty-client-sdk":
   version: 0.0.0-use.local
   resolution: "twenty-client-sdk@workspace:packages/twenty-client-sdk"
   dependencies:
@@ -49589,7 +49631,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"twenty-sdk@workspace:*, twenty-sdk@workspace:packages/twenty-sdk":
+"twenty-sdk@npm:^2.16.0, twenty-sdk@workspace:*, twenty-sdk@workspace:packages/twenty-sdk":
   version: 0.0.0-use.local
   resolution: "twenty-sdk@workspace:packages/twenty-sdk"
   dependencies:
@@ -51717,7 +51759,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^4.1.0":
+"vitest@npm:^4.0.0, vitest@npm:^4.1.0":
   version: 4.1.10
   resolution: "vitest@npm:4.1.10"
   dependencies:

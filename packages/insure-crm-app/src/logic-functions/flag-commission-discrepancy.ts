@@ -22,6 +22,7 @@ export default defineLogicFunction({
   handler,
   databaseEventTriggerSettings: {
     objectUniversalIdentifier: COMMISSION_OBJECT_UNIVERSAL_IDENTIFIER,
-    event: 'updated',
+    eventName: 'updated',
   },
 });
+
