@@ -19,7 +19,7 @@
 | **Phase 1** | Core Data Model, Extended Schema, Seed Engine & Roles | [`docs/phase-1-core-data-model.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-1-core-data-model.md) | ✅ Complete |
 | **Phase 2** | Logic Functions, Automations & Compliance Integrations | [`docs/phase-2-logic-functions.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-2-logic-functions.md) | ✅ Complete |
 | **Phase 3** | Front Components, Micro-Frontends & UI Dashboards | [`docs/phase-3-front-components.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-3-front-components.md) | ✅ Complete |
-| **Phase 4** | Advanced Workflows & Multilingual Localization | `docs/phase-4-workflows-and-i18n.md` | ⏳ Planned |
+| **Phase 4** | Advanced Workflows, Indian Localization & Compliance | [`docs/phase-4-workflows-and-i18n.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-4-workflows-and-i18n.md) | ✅ Complete |
 
 ---
 
@@ -51,6 +51,8 @@
 5. **`flag-commission-discrepancy`**: Real-time database event trigger alerting shortfall variances.
 6. **`verify-ckyc`**: CKYC registry lookup simulation.
 7. **`dpdp-consent-handler`**: DPDP Act 2023 compliance consent grant/withdrawal tracking with audit log references.
+8. **`auto-claim-status-notifier`**: Real-time database event trigger notifying claimants via WhatsApp on claim status changes.
+9. **`persistency-calculator`**: Computes 13th, 25th, 37th, and 61st month persistency ratios for IRDAI returns.
 
 ---
 
@@ -61,6 +63,14 @@
 3. **`family-tree-visualizer.front-component.tsx`**: Household relationship & coverage gap interactive visualizer with cross-sell recommendations.
 4. **`policy-quote-comparator.front-component.tsx`**: Side-by-side product quote comparison matrix for Life, Health, and Motor insurance lines.
 5. **`claim-checklist-viewer.front-component.tsx`**: Interactive claim progress stepper, document requirement checklist, and TAT timeline.
+
+---
+
+## 🇮🇳 Localization & Tax Engines (Phase 4)
+1. **`hindi-templates.json` & `regional-templates.json`**: Pre-configured WhatsApp templates for Hindi, Tamil, Telugu, Marathi, and Gujarati outreach.
+2. **`gst-tds-calculator.ts`**: Section 194D TDS (5% Individual / 10% Corporate) + CGST/SGST/IGST (18%) tax calculator.
+3. **`irdai-report-generator.ts`**: IRDAI quarterly return formatter & 13th-month persistency compliance engine.
+
 
 
 ---

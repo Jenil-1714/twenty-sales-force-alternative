@@ -1,0 +1,28 @@
+{
+  "language": "Hindi",
+  "code": "hi",
+  "templates": {
+    "renewal_reminder": {
+      "name": "insurecrm_renewal_hi",
+      "category": "UTILITY",
+      "text": "नमस्ते {{customer_name}}, आपकी बीमा पॉलिसी संख्या {{policy_number}} की नवीनीकरण तिथि {{due_date}} को देय है। प्रीमियम राशि: ₹{{premium_amount}}। पॉलिसी चालू रखने और क्लेम सुरक्षा बनाए रखने के लिए नीचे दिए गए लिंक से तुरंत भुगतान करें: {{payment_link}}",
+      "buttons": [
+        { "type": "URL", "text": "अभी नवीनीकरण करें (Pay Now)", "url": "{{payment_link}}" },
+        { "type": "QUICK_REPLY", "text": "एजेंट से बात करें (Call Agent)" }
+      ]
+    },
+    "claim_update": {
+      "name": "insurecrm_claim_update_hi",
+      "category": "UTILITY",
+      "text": "प्रिय {{customer_name}}, आपके क्लेम नंबर {{claim_number}} की स्थिति बदलकर '{{claim_status}}' कर दी गई है। वर्तमान चरण: {{stage_description}}। विवरण देखने के लिए: {{claim_link}}",
+      "buttons": [
+        { "type": "URL", "text": "क्लेम ट्रैक करें", "url": "{{claim_link}}" }
+      ]
+    },
+    "welcome_onboarding": {
+      "name": "insurecrm_welcome_hi",
+      "category": "MARKETING",
+      "text": "बधाई हो {{customer_name}}! आपकी पॉलिसी {{policy_number}} सफलतापूर्वक जारी कर दी गई है। बीमित राशि: ₹{{sum_assured}}। डिजिटल पॉलिसी दस्तावेज़ डाउनलोड करें: {{document_link}}"
+    }
+  }
+}

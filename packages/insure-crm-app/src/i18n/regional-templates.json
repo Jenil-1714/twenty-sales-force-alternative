@@ -1,0 +1,32 @@
+{
+  "languages": [
+    {
+      "language": "Tamil",
+      "code": "ta",
+      "templates": {
+        "renewal_reminder": "வணக்கம் {{customer_name}}, உங்கள் காப்பீட்டுக் கொள்கை எண் {{policy_number}} புதுப்பித்தல் தேதி {{due_date}}. பிரீமியம்: ₹{{premium_amount}}. செலுத்துங்கள்: {{payment_link}}"
+      }
+    },
+    {
+      "language": "Telugu",
+      "code": "te",
+      "templates": {
+        "renewal_reminder": "నమస్కారం {{customer_name}}, మీ ఇన్సూరెన్స్ పాలసీ సంఖ్య {{policy_number}} పునరుద్ధరణ తేదీ {{due_date}}. ప్రీమియం: ₹{{premium_amount}}. చెల్లించండి: {{payment_link}}"
+      }
+    },
+    {
+      "language": "Marathi",
+      "code": "mr",
+      "templates": {
+        "renewal_reminder": "नमस्कार {{customer_name}}, तुमची विमा पॉलिसी क्रमांक {{policy_number}} नूतनीकरण तारीख {{due_date}} आहे. प्रीमियम: ₹{{premium_amount}}. भरणा करा: {{payment_link}}"
+      }
+    },
+    {
+      "language": "Gujarati",
+      "code": "gu",
+      "templates": {
+        "renewal_reminder": "નમસ્તે {{customer_name}}, તમારી વીમા પોલિસી નંબર {{policy_number}} રિન્યુઅલ તારીખ {{due_date}} છે. પ્રીમિયમ: ₹{{premium_amount}}. ચુકવણી કરો: {{payment_link}}"
+      }
+    }
+  ]
+}
