@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'f6g7h8i9-j0k1-l2m3-n4o5-p6q7r8s9t0u1',
+  universalIdentifier: 'fef11e13-6ee8-4223-8689-951b77efd308',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.SELECT,
   name: 'smokerStatus',

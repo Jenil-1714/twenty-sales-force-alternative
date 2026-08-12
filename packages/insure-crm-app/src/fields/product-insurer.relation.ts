@@ -2,8 +2,8 @@ import { defineField, FieldType, OnDeleteAction, RelationType } from 'twenty-sdk
 import { PRODUCT_OBJ_ID } from './policy-product.relation';
 import { INSURER_OBJ_ID } from './policy-insurer.relation';
 
-export const PRODUCT_INSURER_FIELD_ID = '0j4e5f6g-8h4i-9j5k-or7s-3t5q9p8r7u6q';
-export const INSURER_PRODUCTS_FIELD_ID = '1k5f6g7h-9i5j-0k6l-ps8t-4u6r0q9s8v7r';
+export const PRODUCT_INSURER_FIELD_ID = 'f3aa315c-e97c-4b35-a68f-8adbf62287c6';
+export const INSURER_PRODUCTS_FIELD_ID = '8afdc7c9-bdd0-4e80-9665-8f467be18b02';
 
 export default defineField({
   universalIdentifier: PRODUCT_INSURER_FIELD_ID,

@@ -1,7 +1,7 @@
 import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction } from 'twenty-sdk/define';
 
-export const CHECK_EXPIRING_POLICIES_UNIVERSAL_IDENTIFIER = '7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2c';
+export const CHECK_EXPIRING_POLICIES_UNIVERSAL_IDENTIFIER = '0b7a2fa5-4228-43c3-a2a4-f8c74b011b66';
 
 const handler = async (): Promise<{ success: boolean; totalProcessed: number; buckets: Record<string, number> }> => {
   const client = new CoreApiClient();

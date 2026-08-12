@@ -9,7 +9,7 @@ import {
   useSelectedRecordIds,
 } from 'twenty-sdk/front-component';
 
-export const RENEWAL_COMMAND_FORM_UNIVERSAL_IDENTIFIER = '4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9b';
+export const RENEWAL_COMMAND_FORM_UNIVERSAL_IDENTIFIER = 'a04fdb64-6462-4994-9e6e-9408da0c4ade';
 
 const styles: Record<string, CSSProperties> = {
   container: {

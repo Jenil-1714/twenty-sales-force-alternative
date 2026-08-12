@@ -2,7 +2,7 @@ import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction, type RoutePayload } from 'twenty-sdk/define';
 import { Response } from 'twenty-sdk/logic-function';
 
-export const VERIFY_CKYC_UNIVERSAL_IDENTIFIER = '2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f';
+export const VERIFY_CKYC_UNIVERSAL_IDENTIFIER = 'c87e11f0-1042-463d-b027-0a4cce0a6848';
 
 export type CKYCRequest = {
   panNumber?: string;

@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'l2m3n4o5-p6q7-r8s9-t0u1-v2w3x4y5z6a7',
+  universalIdentifier: '862c3ec3-3a08-4969-8c14-4a4d6c60b964',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.TEXT,
   name: 'pinCode',

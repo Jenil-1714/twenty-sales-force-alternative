@@ -2,7 +2,7 @@ import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction, type RoutePayload } from 'twenty-sdk/define';
 import { Response } from 'twenty-sdk/logic-function';
 
-export const RECONCILE_COMMISSION_STATEMENT_UNIVERSAL_IDENTIFIER = '0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d';
+export const RECONCILE_COMMISSION_STATEMENT_UNIVERSAL_IDENTIFIER = 'e3954da2-efc9-4c18-a8ed-c182abbde2ed';
 
 export type StatementEntry = {
   statementReference: string;

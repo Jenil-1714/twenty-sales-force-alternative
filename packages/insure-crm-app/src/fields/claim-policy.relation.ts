@@ -2,8 +2,8 @@ import { defineField, FieldType, OnDeleteAction, RelationType } from 'twenty-sdk
 import { CLAIM_OBJECT_ID } from '../objects/claim.object';
 import { POLICY_OBJ_ID } from './policy-insurer.relation';
 
-export const CLAIM_POLICY_FIELD_ID = '8h2c3d4e-6f2g-7h3i-mp5q-1r3o7n6p5s4o';
-export const POLICY_CLAIMS_FIELD_ID = '9i3d4e5f-7g3h-8i4j-nq6r-2s4p8o7q6t5p';
+export const CLAIM_POLICY_FIELD_ID = 'e9a38e58-ad1d-4d1e-b05d-0161fcb58d71';
+export const POLICY_CLAIMS_FIELD_ID = '6a7c4ea4-9a4e-4f3d-aa21-939e2d33d242';
 
 export default defineField({
   universalIdentifier: CLAIM_POLICY_FIELD_ID,

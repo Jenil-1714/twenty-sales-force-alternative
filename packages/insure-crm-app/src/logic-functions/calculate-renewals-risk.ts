@@ -2,7 +2,7 @@ import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction, type RoutePayload } from 'twenty-sdk/define';
 import { Response } from 'twenty-sdk/logic-function';
 
-export const CALCULATE_RENEWALS_RISK_UNIVERSAL_IDENTIFIER = '9b0c1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e';
+export const CALCULATE_RENEWALS_RISK_UNIVERSAL_IDENTIFIER = '670b4905-6ce9-433a-83be-c9ce089e0018';
 
 export type RiskAssessmentResult = {
   policyId: string;

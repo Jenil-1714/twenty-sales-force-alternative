@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'c3d4e5f6-g7h8-i9j0-k1l2-m3n4o5p6q7r8',
+  universalIdentifier: '61cfc848-0140-40f9-98cf-fe48f687f044',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.SELECT,
   name: 'maritalStatus',

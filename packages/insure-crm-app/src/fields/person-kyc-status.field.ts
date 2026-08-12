@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'i9j0k1l2-m3n4-o5p6-q7r8-s9t0u1v2w3x4',
+  universalIdentifier: '7f3423b2-60e8-4cef-89f7-9fe457f64f09',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.SELECT,
   name: 'kycStatus',

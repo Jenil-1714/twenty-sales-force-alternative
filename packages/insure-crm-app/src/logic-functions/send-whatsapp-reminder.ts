@@ -2,7 +2,7 @@ import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction, type RoutePayload } from 'twenty-sdk/define';
 import { Response } from 'twenty-sdk/logic-function';
 
-export const SEND_WHATSAPP_REMINDER_UNIVERSAL_IDENTIFIER = '8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d';
+export const SEND_WHATSAPP_REMINDER_UNIVERSAL_IDENTIFIER = '38b0abe5-8aa2-43cf-9204-2a04149dc482';
 
 export type WhatsAppPayload = {
   policyId: string;

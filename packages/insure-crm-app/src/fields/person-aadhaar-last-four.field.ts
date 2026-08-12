@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'h8i9j0k1-l2m3-n4o5-p6q7-r8s9t0u1v2w3',
+  universalIdentifier: 'b599f384-726f-4b30-83cc-083c3e9bb9fb',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.TEXT,
   name: 'aadhaarLastFour',

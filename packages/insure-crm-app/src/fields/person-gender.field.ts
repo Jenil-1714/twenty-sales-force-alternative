@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'b2c3d4e5-f6g7-h8i9-j0k1-l2m3n4o5p6q7',
+  universalIdentifier: 'f5112018-1cda-4ef8-a5d8-6f588a91f0fa',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.SELECT,
   name: 'gender',

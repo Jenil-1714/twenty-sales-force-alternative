@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'k1l2m3n4-o5p6-q7r8-s9t0-u1v2w3x4y5z6',
+  universalIdentifier: '9fb4f354-5d80-434a-be0d-ae0a0aa85873',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.MULTI_SELECT,
   name: 'communicationPref',

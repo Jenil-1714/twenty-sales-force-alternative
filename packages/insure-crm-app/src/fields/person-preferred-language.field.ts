@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'j0k1l2m3-n4o5-p6q7-r8s9-t0u1v2w3x4y5',
+  universalIdentifier: 'e47b5b87-e846-4c7c-b12c-ad49a2345f97',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.SELECT,
   name: 'preferredLanguage',

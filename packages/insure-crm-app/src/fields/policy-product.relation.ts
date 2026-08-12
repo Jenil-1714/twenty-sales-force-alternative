@@ -1,10 +1,10 @@
 import { defineField, FieldType, OnDeleteAction, RelationType } from 'twenty-sdk/define';
 
-export const POLICY_OBJ_ID = '7d1f2e3a-5a1b-6f2d-be4f-0g2d6c5e4f3d';
-export const PRODUCT_OBJ_ID = '1a5b6c7d-9e5f-0a6b-fi8j-4k6h0g9i8l7h';
+export const POLICY_OBJ_ID = '9df0e376-8011-437f-b052-c22588405377';
+export const PRODUCT_OBJ_ID = '340c33bf-91bf-4812-9321-c6d2a03432fa';
 
-export const POLICY_PRODUCT_FIELD_ID = '2b6c7d8e-0f6a-1b7c-gj9k-5l7i1h0j9m8i';
-export const PRODUCT_POLICIES_FIELD_ID = '3c7d8e9f-1a7b-2c8d-hk0l-6m8j2i1k0n9j';
+export const POLICY_PRODUCT_FIELD_ID = '291a25a3-7945-40b9-b9ac-80f1ac836b27';
+export const PRODUCT_POLICIES_FIELD_ID = '425a36ca-3554-4a14-bc49-1bb6a11aaaf8';
 
 export default defineField({
   universalIdentifier: POLICY_PRODUCT_FIELD_ID,

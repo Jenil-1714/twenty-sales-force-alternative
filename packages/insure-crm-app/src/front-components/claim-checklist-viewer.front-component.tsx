@@ -2,7 +2,7 @@ import { type CSSProperties, useState } from 'react';
 import { defineFrontComponent } from 'twenty-sdk/define';
 import { enqueueSnackbar } from 'twenty-sdk/front-component';
 
-export const CLAIM_CHECKLIST_VIEWER_UNIVERSAL_IDENTIFIER = '8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e';
+export const CLAIM_CHECKLIST_VIEWER_UNIVERSAL_IDENTIFIER = '67d0ba84-cee7-4917-956d-d3b634b149b7';
 
 const styles: Record<string, CSSProperties> = {
   container: {

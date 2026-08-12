@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'e5f6g7h8-i9j0-k1l2-m3n4-o5p6q7r8s9t0',
+  universalIdentifier: '70c10e87-7a97-4db9-88ef-79603e4df807',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.TEXT,
   name: 'occupation',

@@ -2,7 +2,7 @@ import { CoreApiClient } from 'twenty-client-sdk/core';
 import { defineLogicFunction, type RoutePayload } from 'twenty-sdk/define';
 import { Response } from 'twenty-sdk/logic-function';
 
-export const DPDP_CONSENT_HANDLER_UNIVERSAL_IDENTIFIER = '3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a';
+export const DPDP_CONSENT_HANDLER_UNIVERSAL_IDENTIFIER = '298b5b4a-b72b-4832-bd74-24428c732a7e';
 
 export type DPDPConsentPayload = {
   personId: string;

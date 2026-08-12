@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'm3n4o5p6-q7r8-s9t0-u1v2-w3x4y5z6a7b8',
+  universalIdentifier: '2d287b1b-ef54-422f-8d19-32a42c2e5d42',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.DATE_TIME,
   name: 'customerSince',

@@ -2,8 +2,8 @@ import { defineField, FieldType, OnDeleteAction, RelationType } from 'twenty-sdk
 import { COMMISSION_OBJECT_ID } from '../objects/commission.object';
 import { POLICY_OBJ_ID } from './policy-insurer.relation';
 
-export const COMMISSION_POLICY_FIELD_ID = '4d8e9f0a-2b8c-3d9e-il1m-7n9k3j2l1o0k';
-export const POLICY_COMMISSIONS_FIELD_ID = '5e9f0a1b-3c9d-4e0f-jm2n-8o0l4k3m2p1l';
+export const COMMISSION_POLICY_FIELD_ID = 'fbdc5a38-0be1-49c0-9620-aa333f6364db';
+export const POLICY_COMMISSIONS_FIELD_ID = '90da91ac-58f2-40b6-961d-667cd672add7';
 
 export default defineField({
   universalIdentifier: COMMISSION_POLICY_FIELD_ID,

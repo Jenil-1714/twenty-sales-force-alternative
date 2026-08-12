@@ -2,7 +2,7 @@ import { defineLogicFunction } from 'twenty-sdk/define';
 import { type ObjectRecordUpdateEvent } from 'twenty-sdk/logic-function';
 import { CLAIM_OBJECT_UNIVERSAL_IDENTIFIER } from '../constants/universal-identifiers';
 
-export const AUTO_CLAIM_STATUS_NOTIFIER_UNIVERSAL_IDENTIFIER = '4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9c';
+export const AUTO_CLAIM_STATUS_NOTIFIER_UNIVERSAL_IDENTIFIER = '37784fe1-dfdf-4f68-b0f1-bec80998a0b0';
 
 const handler = async (event: ObjectRecordUpdateEvent): Promise<void> => {
   const before = event.properties?.before as Record<string, unknown> | undefined;

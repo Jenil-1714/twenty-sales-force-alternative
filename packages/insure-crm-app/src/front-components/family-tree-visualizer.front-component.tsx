@@ -1,7 +1,7 @@
 import { type CSSProperties, useState } from 'react';
 import { defineFrontComponent } from 'twenty-sdk/define';
 
-export const FAMILY_TREE_VISUALIZER_UNIVERSAL_IDENTIFIER = '6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c';
+export const FAMILY_TREE_VISUALIZER_UNIVERSAL_IDENTIFIER = '55beefb1-3fbc-4c87-8123-a85b85379de3';
 
 const styles: Record<string, CSSProperties> = {
   container: {

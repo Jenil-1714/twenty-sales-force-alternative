@@ -3,7 +3,7 @@ import { RestApiClient } from 'twenty-client-sdk/rest';
 import { defineFrontComponent } from 'twenty-sdk/define';
 import { enqueueSnackbar } from 'twenty-sdk/front-component';
 
-export const COMMISSION_RECONCILIATION_VIEW_UNIVERSAL_IDENTIFIER = '5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0c';
+export const COMMISSION_RECONCILIATION_VIEW_UNIVERSAL_IDENTIFIER = '921e8034-8a2d-4dec-b0f6-e442a344fab9';
 
 const styles: Record<string, CSSProperties> = {
   container: {

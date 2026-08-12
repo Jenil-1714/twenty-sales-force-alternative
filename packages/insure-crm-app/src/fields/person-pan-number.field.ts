@@ -1,7 +1,7 @@
 import { defineField, FieldType, STANDARD_OBJECT } from 'twenty-sdk/define';
 
 export default defineField({
-  universalIdentifier: 'g7h8i9j0-k1l2-m3n4-o5p6-q7r8s9t0u1v2',
+  universalIdentifier: 'd3fe8545-de96-49c3-83ce-850541a23454',
   objectUniversalIdentifier: STANDARD_OBJECT.person.universalIdentifier,
   type: FieldType.TEXT,
   name: 'panNumber',

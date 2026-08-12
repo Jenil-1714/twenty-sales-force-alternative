@@ -2,7 +2,7 @@ import { defineLogicFunction } from 'twenty-sdk/define';
 import { type ObjectRecordUpdateEvent } from 'twenty-sdk/logic-function';
 import { COMMISSION_OBJECT_UNIVERSAL_IDENTIFIER } from '../constants/universal-identifiers';
 
-export const FLAG_COMMISSION_DISCREPANCY_UNIVERSAL_IDENTIFIER = '1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e';
+export const FLAG_COMMISSION_DISCREPANCY_UNIVERSAL_IDENTIFIER = 'e6f593b2-06de-4f68-8e83-d1768cda49ab';
 
 const handler = async (event: ObjectRecordUpdateEvent): Promise<void> => {
   const updatedData = event.properties?.after as Record<string, unknown> | undefined;

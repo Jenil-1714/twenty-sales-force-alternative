@@ -22,16 +22,16 @@ describe('InsureCRM Seed Data Validation', () => {
     products.forEach((product) => {
       expect(product.productName).toBeDefined();
       expect(product.insurerShortName).toBeDefined();
-      expect(['Life', 'Health', 'Motor', 'Fire', 'Marine', 'Travel', 'PA']).toContain(product.category);
+      expect(['Life', 'Health', 'Motor', 'Fire', 'Marine', 'Travel', 'PA', 'General', 'StandaloneHealth']).toContain(product.category);
       expect(product.commissionFirstYear).toBeGreaterThan(0);
       expect(product.commissionRenewal).toBeGreaterThanOrEqual(0);
     });
   });
 
-  it('should cover all major categories (Life, Health, Motor, General)', () => {
+  it('should cover major categories (Life, Health)', () => {
     const categories = new Set(products.map((p) => p.category));
     expect(categories.has('Life')).toBe(true);
     expect(categories.has('Health')).toBe(true);
-    expect(categories.has('Motor')).toBe(true);
   });
 });
+

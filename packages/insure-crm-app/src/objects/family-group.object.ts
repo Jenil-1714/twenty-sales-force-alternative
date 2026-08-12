@@ -1,7 +1,7 @@
 import { defineObject, FieldType } from 'twenty-sdk/define';
 
-export const FAMILY_GROUP_OBJECT_ID = '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g2c';
-export const FAMILY_GROUP_NAME_FIELD_ID = '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g2d';
+export const FAMILY_GROUP_OBJECT_ID = '2cf41b4b-6ceb-4438-9020-56408d03d7b4';
+export const FAMILY_GROUP_NAME_FIELD_ID = 'a7900a00-cbe8-4bbc-9dcb-63cbcb682b50';
 
 export default defineObject({
   universalIdentifier: FAMILY_GROUP_OBJECT_ID,
@@ -23,7 +23,7 @@ export default defineObject({
       isLabelIdentifier: true,
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g2e',
+      universalIdentifier: '859e8510-3c43-4e32-ba00-8bba60786899',
       type: FieldType.RAW_JSON,
       name: 'members',
       label: 'Members',
@@ -31,7 +31,7 @@ export default defineObject({
       icon: 'IconCode',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g2f',
+      universalIdentifier: 'b844482e-e2e3-4397-8230-b4d4df8b8636',
       type: FieldType.CURRENCY,
       name: 'totalAnnualIncome',
       label: 'Total Annual Income',
@@ -39,7 +39,7 @@ export default defineObject({
       icon: 'IconCurrencyDollar',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g30',
+      universalIdentifier: '5019baa4-1055-41ce-90dc-3f5dc43349be',
       type: FieldType.CURRENCY,
       name: 'totalCoverLife',
       label: 'Total Cover Life',
@@ -47,7 +47,7 @@ export default defineObject({
       icon: 'IconCurrencyDollar',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g31',
+      universalIdentifier: 'edd14d2c-5001-480a-865e-0e9c7d3cad08',
       type: FieldType.CURRENCY,
       name: 'totalCoverHealth',
       label: 'Total Cover Health',
@@ -55,7 +55,7 @@ export default defineObject({
       icon: 'IconCurrencyDollar',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g32',
+      universalIdentifier: '4e7de2dc-d3d1-4571-8aa4-398858fa54a4',
       type: FieldType.CURRENCY,
       name: 'coverageGapLife',
       label: 'Coverage Gap Life',
@@ -63,7 +63,7 @@ export default defineObject({
       icon: 'IconCurrencyDollar',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g33',
+      universalIdentifier: '8d50f890-628f-4602-913f-6324f92efa9b',
       type: FieldType.CURRENCY,
       name: 'coverageGapHealth',
       label: 'Coverage Gap Health',
@@ -71,7 +71,7 @@ export default defineObject({
       icon: 'IconCurrencyDollar',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g34',
+      universalIdentifier: '90b988d5-eb56-48c5-b9ff-6171dae578a4',
       type: FieldType.CURRENCY,
       name: 'totalAnnualPremium',
       label: 'Total Annual Premium',
@@ -79,7 +79,7 @@ export default defineObject({
       icon: 'IconCurrencyDollar',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g35',
+      universalIdentifier: 'bf0a9570-1c57-41ed-aff4-7c55b06d246b',
       type: FieldType.RAW_JSON,
       name: 'crossSellOpportunities',
       label: 'Cross Sell Opportunities',
@@ -87,7 +87,7 @@ export default defineObject({
       icon: 'IconCode',
     },
     {
-      universalIdentifier: '6c9e3d7a-4f0b-5g1c-ad3e-9f1c5b4d3g36',
+      universalIdentifier: 'e7b2e078-21e6-4458-8c19-7bcc35e39c42',
       type: FieldType.ADDRESS,
       name: 'address',
       label: 'Address',

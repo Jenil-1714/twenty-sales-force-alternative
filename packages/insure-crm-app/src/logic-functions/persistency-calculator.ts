@@ -3,7 +3,7 @@ import { defineLogicFunction, type RoutePayload } from 'twenty-sdk/define';
 import { Response } from 'twenty-sdk/logic-function';
 import { calculatePersistencyRatios, type PolicyCohortEntry } from '../utils/irdai-report-generator';
 
-export const PERSISTENCY_CALCULATOR_UNIVERSAL_IDENTIFIER = '5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0d';
+export const PERSISTENCY_CALCULATOR_UNIVERSAL_IDENTIFIER = 'fe9e57a1-8f54-4498-be1f-1969cd5a99ee';
 
 const handler = async (event: RoutePayload): Promise<Response> => {
   const client = new CoreApiClient();
