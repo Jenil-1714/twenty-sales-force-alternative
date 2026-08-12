@@ -76,7 +76,7 @@ export default defineObject({
       label: 'Variance Status',
       description: 'Variance Status',
       icon: 'IconList',
-      defaultValue: 'Pending',
+      defaultValue: "'Pending'",
       options: [
         { id: '1', value: 'Match', label: 'Match', color: 'green', position: 0 },
         { id: '2', value: 'Shortfall', label: 'Shortfall', color: 'red', position: 1 },
@@ -155,7 +155,7 @@ export default defineObject({
       label: 'Status',
       description: 'Status',
       icon: 'IconStatusChange',
-      defaultValue: 'Expected',
+      defaultValue: "'Expected'",
       options: [
         { id: '1', value: 'Expected', label: 'Expected', color: 'gray', position: 0 },
         { id: '2', value: 'Received', label: 'Received', color: 'green', position: 1 },

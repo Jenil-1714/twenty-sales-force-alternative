@@ -45,7 +45,7 @@ export default defineObject({
       label: 'Verification Status',
       description: 'Verification Status',
       icon: 'IconStatusChange',
-      defaultValue: 'Pending',
+      defaultValue: "'Pending'",
       options: [
         { id: '1', value: 'Pending', label: 'Pending', color: 'gray', position: 0 },
         { id: '2', value: 'Verified', label: 'Verified', color: 'green', position: 1 },

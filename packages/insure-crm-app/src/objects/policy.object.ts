@@ -57,7 +57,7 @@ export default defineObject({
       label: 'Status',
       description: 'Policy Status',
       icon: 'IconActivity',
-      defaultValue: U.POLICY_STATUS_PROPOSAL,
+      defaultValue: "'PROPOSAL'",
       options: [
         { id: U.POLICY_STATUS_OPTION_PROPOSAL_ID, value: U.POLICY_STATUS_PROPOSAL, label: 'Proposal', color: 'blue', position: 0 },
         { id: U.POLICY_STATUS_OPTION_PENDING_ISSUANCE_ID, value: U.POLICY_STATUS_PENDING_ISSUANCE, label: 'Pending Issuance', color: 'orange', position: 1 },
@@ -143,7 +143,7 @@ export default defineObject({
       label: 'Priority',
       description: 'Priority',
       icon: 'IconFlag',
-      defaultValue: U.POLICY_PRIORITY_MEDIUM,
+      defaultValue: "'MEDIUM'",
       options: [
         { id: U.POLICY_PRIORITY_OPTION_HIGH_ID, value: U.POLICY_PRIORITY_HIGH, label: 'High', color: 'red', position: 0 },
         { id: U.POLICY_PRIORITY_OPTION_MEDIUM_ID, value: U.POLICY_PRIORITY_MEDIUM, label: 'Medium', color: 'orange', position: 1 },

@@ -9,4 +9,5 @@ export default defineAgent({
   description: 'Agent for handling insurance renewals automatically.',
   icon: 'IconRobot',
   prompt: 'You are an Insurance Renewal AI Agent. Your goals are to find expiring policies, prioritize them by risk, draft renewal messages, send reminders via WhatsApp, update pipeline status, and escalate to human agents if necessary.',
+  responseFormat: { type: 'text' },
 });

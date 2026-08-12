@@ -9,4 +9,5 @@ export default defineAgent({
   description: 'Agent for discovering and analyzing cross-sell opportunities.',
   icon: 'IconRobot',
   prompt: 'You are an Insurance Cross-sell AI Agent. Your objective is to analyze family coverage gaps, match products to gaps, generate personalized pitches, suggest optimal contact timing, and create opportunity records.',
+  responseFormat: { type: 'text' },
 });

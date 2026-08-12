@@ -80,7 +80,7 @@ export default defineObject({
       label: 'Status',
       description: 'Status',
       icon: 'IconStatusChange',
-      defaultValue: 'INTIMATED',
+      defaultValue: "'INTIMATED'",
       options: [
         { id: '1', value: 'INTIMATED', label: 'Intimated', color: 'gray', position: 0 },
         { id: '2', value: 'DOCS_PENDING', label: 'Docs Pending', color: 'yellow', position: 1 },
