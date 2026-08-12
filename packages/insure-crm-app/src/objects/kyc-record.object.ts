@@ -1,7 +1,12 @@
 import { defineObject, FieldType } from 'twenty-sdk/define';
+import {
+  KYC_RECORD_OBJECT_UNIVERSAL_IDENTIFIER,
+  KYC_RECORD_DOCUMENT_NUMBER_FIELD_UNIVERSAL_IDENTIFIER,
+} from '../constants/universal-identifiers';
 
-export const KYC_RECORD_OBJECT_ID = '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f1b';
-export const KYC_RECORD_NAME_FIELD_ID = '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f1c';
+export const KYC_RECORD_OBJECT_ID = KYC_RECORD_OBJECT_UNIVERSAL_IDENTIFIER;
+export const KYC_RECORD_NAME_FIELD_ID = KYC_RECORD_DOCUMENT_NUMBER_FIELD_UNIVERSAL_IDENTIFIER;
+
 
 export default defineObject({
   universalIdentifier: KYC_RECORD_OBJECT_ID,

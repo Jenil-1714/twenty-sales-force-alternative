@@ -1,7 +1,12 @@
 import { defineObject, FieldType } from 'twenty-sdk/define';
+import {
+  FAMILY_GROUP_OBJECT_UNIVERSAL_IDENTIFIER,
+  FAMILY_GROUP_GROUP_NAME_FIELD_UNIVERSAL_IDENTIFIER,
+} from '../constants/universal-identifiers';
 
-export const FAMILY_GROUP_OBJECT_ID = '2cf41b4b-6ceb-4438-9020-56408d03d7b4';
-export const FAMILY_GROUP_NAME_FIELD_ID = 'a7900a00-cbe8-4bbc-9dcb-63cbcb682b50';
+export const FAMILY_GROUP_OBJECT_ID = FAMILY_GROUP_OBJECT_UNIVERSAL_IDENTIFIER;
+export const FAMILY_GROUP_NAME_FIELD_ID = FAMILY_GROUP_GROUP_NAME_FIELD_UNIVERSAL_IDENTIFIER;
+
 
 export default defineObject({
   universalIdentifier: FAMILY_GROUP_OBJECT_ID,

@@ -1,7 +1,12 @@
 import { defineObject, FieldType } from 'twenty-sdk/define';
+import {
+  COMMISSION_OBJECT_UNIVERSAL_IDENTIFIER,
+  COMMISSION_COMMISSION_NUMBER_FIELD_UNIVERSAL_IDENTIFIER,
+} from '../constants/universal-identifiers';
 
-export const COMMISSION_OBJECT_ID = '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a0';
-export const COMMISSION_NAME_FIELD_ID = '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a1';
+export const COMMISSION_OBJECT_ID = COMMISSION_OBJECT_UNIVERSAL_IDENTIFIER;
+export const COMMISSION_NAME_FIELD_ID = COMMISSION_COMMISSION_NUMBER_FIELD_UNIVERSAL_IDENTIFIER;
+
 
 export default defineObject({
   universalIdentifier: COMMISSION_OBJECT_ID,

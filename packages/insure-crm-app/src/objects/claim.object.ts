@@ -1,7 +1,12 @@
 import { defineObject, FieldType } from 'twenty-sdk/define';
+import {
+  CLAIM_OBJECT_UNIVERSAL_IDENTIFIER,
+  CLAIM_CLAIM_NUMBER_FIELD_UNIVERSAL_IDENTIFIER,
+} from '../constants/universal-identifiers';
 
-export const CLAIM_OBJECT_ID = '4a7c1b5e-2f8d-4e9a-8b1c-7d9a3f2b1e0a';
-export const CLAIM_NAME_FIELD_ID = '4a7c1b5e-2f8d-4e9a-8b1c-7d9a3f2b1e0b';
+export const CLAIM_OBJECT_ID = CLAIM_OBJECT_UNIVERSAL_IDENTIFIER;
+export const CLAIM_NAME_FIELD_ID = CLAIM_CLAIM_NUMBER_FIELD_UNIVERSAL_IDENTIFIER;
+
 
 export default defineObject({
   universalIdentifier: CLAIM_OBJECT_ID,
