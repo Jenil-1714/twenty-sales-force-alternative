@@ -1,0 +1,1672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsureCRM — Interactive Scenario Demonstrator & Guided Tour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Default Twenty CRM Light Theme (Matching localhost:2020) */
+      --bg-page: #f8fafc;
+      --bg-sidebar: #ffffff;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f1f5f9;
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+      
+      --success: #10b981;
+      --success-light: #ecfdf5;
+      --success-text: #047857;
+      
+      --warning: #f59e0b;
+      --warning-light: #fffbeb;
+      --warning-text: #b45309;
+      
+      --danger: #ef4444;
+      --danger-light: #fef2f2;
+      --danger-text: #b91c1c;
+      
+      --purple: #8b5cf6;
+      --purple-light: #f5f3ff;
+
+      --pill-bg: #eff6ff;
+      --pill-text: #2563eb;
+
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Dark Theme Toggle Class */
+    body.dark-mode {
+      --bg-page: #0b0f19;
+      --bg-sidebar: #111827;
+      --bg-card: #1f2937;
+      --bg-card-subtle: #111827;
+      --border: #374151;
+      --border-dark: #4b5563;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --primary-light: rgba(59, 130, 246, 0.15);
+      --primary-border: #2563eb;
+      
+      --success: #10b981;
+      --success-light: rgba(16, 185, 129, 0.15);
+      --success-text: #34d399;
+      
+      --warning: #f59e0b;
+      --warning-light: rgba(245, 158, 11, 0.15);
+      --warning-text: #fbbf24;
+      
+      --danger: #ef4444;
+      --danger-light: rgba(239, 68, 68, 0.15);
+      --danger-text: #f87171;
+      
+      --purple: #8b5cf6;
+      --purple-light: rgba(139, 92, 246, 0.15);
+
+      --pill-bg: rgba(59, 130, 246, 0.2);
+      --pill-text: #60a5fa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Virtual Mouse Cursor */
+    #virtual-cursor {
+      position: fixed;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.5s cubic-bezier(0.16, 1, 0.3, 1), top 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      display: none;
+    }
+    #virtual-cursor svg {
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    #virtual-cursor.click-animation {
+      transform: scale(0.75);
+    }
+    #virtual-cursor .click-ripple {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      animation: ripple 0.5s ease-out forwards;
+    }
+    @keyframes ripple {
+      0% { transform: scale(0.2); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* Demo Control Header Bar */
+    .demo-top-bar {
+      height: 52px;
+      background: #0f172a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 200;
+      border-bottom: 1px solid #1e293b;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-logo {
+      width: 26px;
+      height: 26px;
+      background: var(--primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      color: #fff;
+    }
+    .brand-title {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .brand-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid #3b82f6;
+    }
+
+    .tour-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .scenario-select {
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid #334155;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+    .control-btn {
+      background: #1e293b;
+      color: #ffffff;
+      border: 1px solid #334155;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .control-btn:hover {
+      background: #334155;
+    }
+    .control-btn.primary {
+      background: var(--primary);
+      border-color: var(--primary-hover);
+      color: #fff;
+    }
+    .control-btn.primary:hover {
+      background: var(--primary-hover);
+    }
+    .speed-btn {
+      font-size: 11px;
+      padding: 4px 8px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 4px;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+    .speed-btn.active {
+      color: #60a5fa;
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.2);
+    }
+
+    /* Main Twenty CRM Application Container */
+    .app-body {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Left Sidebar Navigation (Matching Twenty CRM) */
+    .sidebar-nav {
+      width: 220px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    .workspace-header {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .workspace-dropdown {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .workspace-avatar {
+      width: 20px;
+      height: 20px;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .sidebar-search-btn {
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .nav-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-dim);
+      padding: 0 8px 4px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .nav-item:hover {
+      background: var(--bg-card-subtle);
+    }
+    .nav-item.active {
+      background: #e0e7ff;
+      color: #1e1b4b;
+      font-weight: 600;
+    }
+    body.dark-mode .nav-item.active {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+    }
+    .nav-item-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .nav-item-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .nav-item-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-left: 2px;
+    }
+
+    /* Twenty CRM Main Workspace Header & Toolbar */
+    .workspace-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--bg-page);
+    }
+
+    .crm-view-header {
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .crm-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .crm-title-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .crm-view-select {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+      padding: 4px 0;
+    }
+    .crm-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .btn-new-record {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-new-record:hover { background: var(--primary-hover); }
+
+    .crm-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-bottom: 10px;
+    }
+    .crm-toolbar-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    /* Twenty CRM Banner Notification */
+    .twenty-banner {
+      background: #eff6ff;
+      border-bottom: 1px solid #bfdbfe;
+      color: #1e40af;
+      padding: 8px 16px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    body.dark-mode .twenty-banner {
+      background: rgba(30, 64, 175, 0.3);
+      border-color: #1e40af;
+      color: #93c5fd;
+    }
+
+    /* Twenty Table & Grid View */
+    .workspace-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+    }
+
+    .twenty-table-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .twenty-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+    .twenty-table th {
+      padding: 10px 14px;
+      background: var(--bg-card-subtle);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 12px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+    .twenty-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text-main);
+    }
+    .twenty-table tr:hover td {
+      background: var(--bg-card-subtle);
+    }
+
+    /* Pill Badges (Matching Twenty CRM) */
+    .twenty-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--pill-bg);
+      color: var(--pill-text);
+    }
+    .twenty-pill.success { background: var(--success-light); color: var(--success-text); }
+    .twenty-pill.warning { background: var(--warning-light); color: var(--warning-text); }
+    .twenty-pill.danger { background: var(--danger-light); color: var(--danger-text); }
+
+    /* Right Guidance & Technical Drawer */
+    .guidance-panel {
+      width: 360px;
+      background: var(--bg-sidebar);
+      border-left: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .panel-title {
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .step-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--purple-light);
+      color: var(--purple);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--purple);
+    }
+    .panel-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .step-card-header {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .step-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .tech-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .tech-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .code-block {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #a5d6ff;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .log-console {
+      height: 160px;
+      background: #050811;
+      border-top: 1px solid var(--border);
+      padding: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #34d399;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Grid & Form Utilities */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+    .form-label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+    .form-input, .form-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--primary); }
+
+    /* Stepper Component */
+    .stepper { display: flex; align-items: center; justify-content: space-between; margin: 16px 0 24px; position: relative; }
+    .stepper::before { content: ''; position: absolute; top: 14px; left: 0; right: 0; height: 2px; background: var(--border); z-index: 1; }
+    .step-item { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .step-circle { width: 30px; height: 30px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 11px; color: var(--text-muted); }
+    .step-item.active .step-circle { border-color: var(--primary); background: var(--primary); color: #fff; }
+    .step-item.completed .step-circle { border-color: var(--success); background: var(--success); color: #fff; }
+
+    /* Highlight Target */
+    .auto-target { transition: all 0.3s ease; }
+    .auto-target.target-active { box-shadow: 0 0 0 3px var(--primary) !important; border-color: var(--primary) !important; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Virtual Mouse Pointer -->
+  <div id="virtual-cursor">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M5.65376 12.3673H5.46026L5.31717 12.4976L0.500002 16.8829V0.500002L16.8829 16.8829H10.4578L10.2882 17.0094L5.65376 12.3673Z" fill="#3B82F6" stroke="#FFFFFF" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <!-- Top Demo Control Header Bar -->
+  <div class="demo-top-bar">
+    <div class="brand-section">
+      <div class="brand-logo">20</div>
+      <div>
+        <div class="brand-title">InsureCRM Growth OS</div>
+      </div>
+      <span class="brand-badge">Guided Scenario Tour</span>
+    </div>
+
+    <div class="tour-controls">
+      <select id="scenarioSelect" class="scenario-select" onchange="switchScenario(this.value)">
+        <option value="1">1. Policy Renewals & 1-Click WhatsApp Payment</option>
+        <option value="2">2. Commission Reconciliation & TDS Shortfall Alert</option>
+        <option value="3">3. Household Financial Coverage & Quote Comparator</option>
+        <option value="4">4. Claim Intimation, CKYC Verification & Document Stepper</option>
+        <option value="5">5. DPDP Consent Audit & IRDAI Persistency Report</option>
+      </select>
+
+      <button id="playBtn" class="control-btn primary" onclick="togglePlayPause()">
+        <span id="playIcon">▶</span> <span id="playText">Play Auto Tour</span>
+      </button>
+
+      <button class="control-btn" onclick="prevStep()">⏮ Prev</button>
+      <button class="control-btn" onclick="nextStep()">Next ⏭</button>
+      <button class="control-btn" onclick="resetCurrentScenario()">🔄 Reset</button>
+
+      <div style="display:flex; gap:4px; margin-left:6px;">
+        <button class="speed-btn active" onclick="setSpeed(1)">1x</button>
+        <button class="speed-btn" onclick="setSpeed(1.5)">1.5x</button>
+        <button class="speed-btn" onclick="setSpeed(2)">2x</button>
+        <button class="speed-btn" onclick="setSpeed(4)">4x</button>
+      </div>
+
+      <button class="control-btn" onclick="toggleDarkMode()" style="margin-left:8px;">
+        <span id="themeIcon">🌙</span> Theme
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Application Body (Twenty CRM Layout) -->
+  <div class="app-body">
+    
+    <!-- Twenty CRM Left Navigation Sidebar -->
+    <div class="sidebar-nav">
+      <div class="workspace-header">
+        <div class="workspace-dropdown">
+          <div class="workspace-avatar">A</div>
+          <span>Apple</span>
+          <span style="font-size:10px; color:var(--text-muted);">▼</span>
+        </div>
+        <div class="sidebar-search-btn">🔍</div>
+      </div>
+
+      <div class="nav-content">
+        <div>
+          <div class="nav-group-title">Workspace</div>
+          
+          <div class="nav-item" onclick="switchScenario('1')">
+            <div class="nav-item-left">
+              <span>🏢</span> <span class="nav-item-name">Companies</span>
+            </div>
+          </div>
+
+          <div id="nav1" class="nav-item active" onclick="switchScenario('1')">
+            <div class="nav-item-left">
+              <span>📋</span>
+              <span class="nav-item-name">All Policies</span>
+              <span class="nav-item-sub">· Policy</span>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-item-left">
+              <span>👤</span> <span class="nav-item-name">People</span>
+            </div>
+          </div>
+
+          <div id="nav1_sub" class="nav-item" onclick="switchScenario('1')">
+            <div class="nav-item-left">
+              <span>🔄</span>
+              <span class="nav-item-name">All Renewals</span>
+              <span class="nav-item-sub">· Policy</span>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-item-left">
+              <span>💼</span> <span class="nav-item-name">Opportunities</span>
+            </div>
+          </div>
+
+          <div id="nav2" class="nav-item" onclick="switchScenario('2')">
+            <div class="nav-item-left">
+              <span>💵</span>
+              <span class="nav-item-name">All Commissions</span>
+              <span class="nav-item-sub">· Comm...</span>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-item-left">
+              <span>☑️</span> <span class="nav-item-name">Tasks</span>
+            </div>
+          </div>
+
+          <div id="nav4" class="nav-item" onclick="switchScenario('4')">
+            <div class="nav-item-left">
+              <span>🏥</span>
+              <span class="nav-item-name">All Claims</span>
+              <span class="nav-item-sub">· Claim</span>
+            </div>
+          </div>
+
+          <div id="nav3" class="nav-item" onclick="switchScenario('3')">
+            <div class="nav-item-left">
+              <span>👨‍👩‍👧‍👦</span>
+              <span class="nav-item-name">All Family Groups</span>
+              <span class="nav-item-sub">· Famil...</span>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-item-left">
+              <span>📊</span> <span class="nav-item-name">Dashboards</span>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <div class="nav-item-left">
+              <span>🏢</span>
+              <span class="nav-item-name">All Insurers</span>
+              <span class="nav-item-sub">· Insurer</span>
+            </div>
+          </div>
+
+          <div id="nav5" class="nav-item" onclick="switchScenario('5')">
+            <div class="nav-item-left">
+              <span>⚖️</span> <span class="nav-item-name">Workflows</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Twenty CRM Main Workspace Content -->
+    <div class="workspace-main">
+      
+      <!-- CRM Header & Action Bar -->
+      <div class="crm-view-header">
+        <div class="crm-header-top">
+          <div class="crm-title-section">
+            <span>📋</span>
+            <span id="crmViewTitle">Policies</span>
+          </div>
+          <button class="btn-new-record">+ New Policy</button>
+        </div>
+
+        <div class="crm-header-top" style="margin-top:2px;">
+          <div class="crm-view-select">
+            <span>All Policies</span>
+            <span style="font-weight:400; color:var(--text-muted);">· 1</span>
+            <span>v</span>
+          </div>
+          <div class="crm-header-actions">
+            <span>Filter</span>
+            <span>Sort</span>
+            <span>Options</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sync Banner Notification (Matching Twenty CRM) -->
+      <div class="twenty-banner">
+        <span>Sync lost with mailbox tim@apple.dev. Please reconnect for updates: <strong style="cursor:pointer; text-decoration:underline;">Reconnect</strong></span>
+        <span style="cursor:pointer;">✕</span>
+      </div>
+
+      <!-- Main Stage Area -->
+      <div id="workspaceStage" class="workspace-content">
+        <!-- Dynamic Scenario Content Rendered Here -->
+      </div>
+    </div>
+
+    <!-- Right Guidance & Technical Telemetry Drawer -->
+    <div class="guidance-panel">
+      <div class="panel-header">
+        <div class="panel-title">Step-by-Step Guidance</div>
+        <div id="stepBadge" class="step-badge">Step 1 / 6</div>
+      </div>
+
+      <div class="panel-content">
+        <div class="step-card">
+          <div id="stepHeader" class="step-card-header">
+            <span>🚀</span> Scenario Overview
+          </div>
+          <div id="stepDesc" class="step-card-desc">
+            Select a scenario above or click "Play Auto Tour" to watch automated data filling, AI calculations, and workflow executions.
+          </div>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-title">⚡ Under The Hood (Twenty SDK Logic)</div>
+          <div id="techDetails" class="code-block">
+// Logic Function: select scenario to view signature
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-card-header" style="font-size:11px; color:var(--text-muted);">
+            📊 Real-Time Execution Telemetry
+          </div>
+          <div id="telemetryBox" style="font-size:12px; line-height:1.5; color:var(--text-main);">
+            System Ready.
+          </div>
+        </div>
+      </div>
+
+      <!-- Execution Log Console -->
+      <div id="logConsole" class="log-console">
+        <div class="log-entry"><span style="color:var(--text-dim);">[21:55:00]</span> InsureCRM Twenty Engine Initialized.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /* ==========================================================================
+       INSURECRM INTERACTIVE SCENARIOS & AUTO-PLAY ENGINE LOGIC
+       ========================================================================== */
+
+    let currentScenarioId = "1";
+    let currentStepIndex = 0;
+    let isPlaying = false;
+    let autoPlayTimer = null;
+    let playbackSpeed = 1;
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      document.getElementById('themeIcon').innerText = isDark ? '☀️' : '🌙';
+      log(`Switched to ${isDark ? 'Dark' : 'Light'} theme mode.`);
+    }
+
+    // SCENARIO DEFINITIONS & SHORT STEPS
+    const scenarios = {
+      "1": {
+        title: "Automated Policy Renewal & 1-Click WhatsApp Payment Flow",
+        steps: [
+          {
+            header: "Step 1: Daily CRON Scan & Policy Identification",
+            desc: "The automated 8 AM CRON scanner (`check-expiring-policies.ts`) scans active policies expiring in 60/30/15/7 days. Identifies policy POL-2026-9842 (Rajesh Kumar) expiring in 4 days.",
+            tech: `Universal Identifier: 7f8a9b0c-1d2e-3f4a-5b6c-7d8e9f0a1b2c\nTrigger: cronTriggerSettings ('0 8 * * *')\nQuery: { status: 'ACTIVE', nextRenewalDate: { lte: '2026-08-19' } }`,
+            action: async () => {
+              updateSidebarActive('1');
+              renderScenario1();
+              highlightTarget('#policyTable');
+              log('CRON trigger executed: 1 policy flagged for renewal (POL-2026-9842).');
+              updateTelemetry('Found 1 Policy expiring in 4 days: HDFC ERGO Optima Secure (₹18,450).');
+            }
+          },
+          {
+            header: "Step 2: AI Renewal Lapse Risk Computation",
+            desc: "Invokes `calculate-renewals-risk.ts` to score renewal lapse risk. Factors in monthly NACH payment failure and 4 days remaining to calculate lapse risk.",
+            tech: `Universal Identifier: 9b0c1d2e-3f4a-5b6c-7d8e-9f0a1b2c3d4e\nEndpoint: POST /s/renewals/calculate-risk\nResult: { riskScore: 78, category: 'CRITICAL', factors: ['Overdue monthly NACH', '4 days left'] }`,
+            action: async () => {
+              await animateCursorTo('#computeRiskBtn');
+              clickTarget('#computeRiskBtn');
+              document.getElementById('riskBadge').className = 'twenty-pill danger';
+              document.getElementById('riskBadge').innerText = 'CRITICAL (78/100)';
+              document.getElementById('riskFactorsCard').style.display = 'block';
+              log('POST /s/renewals/calculate-risk -> Risk Score: 78/100 (CRITICAL).');
+              updateTelemetry('Risk factors identified: Monthly NACH Auto-debit failed, 4 days remaining.');
+            }
+          },
+          {
+            header: "Step 3: WhatsApp Template Selection & Customization",
+            desc: "Agent selects pre-approved Hindi WhatsApp template `insurecrm_renewal_hi` with customer name, policy number, due date, and Razorpay UPI link.",
+            tech: `Template File: src/i18n/hindi-templates.json\nTemplate: insurecrm_renewal_hi\nVariables: { name: 'Rajesh Kumar', amount: '₹18,450', dueDate: '19-Aug-2026' }`,
+            action: async () => {
+              await animateCursorTo('#templateSelect');
+              document.getElementById('templateSelect').value = 'insurecrm_renewal_hi';
+              log('Selected WhatsApp Template: insurecrm_renewal_hi.');
+              updateTelemetry('Formatted message payload in Hindi with Razorpay 1-click UPI intent link.');
+            }
+          },
+          {
+            header: "Step 4: Dispatch 1-Click WhatsApp Payment Link",
+            desc: "Dispatches WhatsApp interactive payment message via Gupshup API (`send-whatsapp-reminder.ts`) containing short URL https://pay.insurecrm.in/r/POL-2026-9842.",
+            tech: `Universal Identifier: 8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d\nEndpoint: POST /s/renewals/send-whatsapp\nResponse: { success: true, messageId: 'wamid.HBgLOTE5ODc2NTQzMjEF...' }`,
+            action: async () => {
+              await animateCursorTo('#sendWhatsappBtn');
+              clickTarget('#sendWhatsappBtn');
+              document.getElementById('phoneMockupContainer').style.display = 'block';
+              log('POST /s/renewals/send-whatsapp -> Gupshup API status: DELIVERED.');
+              updateTelemetry('WhatsApp message delivered to customer mobile (+91 98765 43210).');
+            }
+          },
+          {
+            header: "Step 5: Customer Mobile Payment Simulation",
+            desc: "Simulates customer opening WhatsApp notification on mobile, reviewing premium due, and tapping 'Pay ₹18,450 via UPI'.",
+            tech: `Webhook Event: razorpay.payment.captured\nPayload: { paymentId: 'pay_P98241029', status: 'captured', amount: 1845000 }`,
+            action: async () => {
+              await animateCursorTo('#payUpiBtn');
+              clickTarget('#payUpiBtn');
+              document.getElementById('payUpiBtn').innerText = '✓ Payment Successful (₹18,450)';
+              document.getElementById('payUpiBtn').style.background = '#10b981';
+              log('Webhook received: Payment ID pay_P98241029 captured successfully.');
+              updateTelemetry('Razorpay Instant UPI payment verified for ₹18,450.');
+            }
+          },
+          {
+            header: "Step 6: Real-Time Policy Status & Renewal Booking",
+            desc: "Policy status automatically transitions from `PREMIUM_DUE` to `ACTIVE`. Next renewal date updated to 15-Aug-2027, and renewal commission booked.",
+            tech: `Database Mutation: policy.update({ id: 'POL-2026-9842', status: 'ACTIVE', nextRenewalDate: '2027-08-15' })\nCommission Auto-Booked: ₹922.50 (5% Renewal Rate)`,
+            action: async () => {
+              document.getElementById('statusPill').className = 'twenty-pill success';
+              document.getElementById('statusPill').innerText = 'ACTIVE';
+              log('Policy POL-2026-9842 status updated to ACTIVE. Renewal commission booked.');
+              updateTelemetry('Workflow Complete: Renewal captured, policy extended to 2027.');
+            }
+          }
+        ]
+      },
+
+      "2": {
+        title: "Commission Reconciliation & TDS Shortfall Alert Flow",
+        steps: [
+          {
+            header: "Step 1: Payout Statement File Ingestion",
+            desc: "Back-office operations team uploads raw CSV/JSON payout statement from HDFC ERGO (`HDFC-2026-Q2-089`).",
+            tech: `Micro-Frontend: commission-reconciliation-view.front-component.tsx\nFile: HDFC-2026-Q2-089.json\nRecords Included: 4 Policy Payouts`,
+            action: async () => {
+              updateSidebarActive('2');
+              renderScenario2();
+              log('Ingested payout statement HDFC-2026-Q2-089 with 4 policy payout entries.');
+              updateTelemetry('Loaded HDFC ERGO payout statement statement reference HDFC-2026-Q2-089.');
+            }
+          },
+          {
+            header: "Step 2: Section 194D TDS & GST Tax Computation",
+            desc: "Applies `gst-tds-calculator.ts` engine: 5% TDS under Section 194D for individual POSPs + 18% GST (CGST 9% + SGST 9%).",
+            tech: `Tax Module: src/utils/gst-tds-calculator.ts\nFormula: TDS = Gross * 0.05 | GST = Gross * 0.18\nNet Payout = Gross - TDS`,
+            action: async () => {
+              await animateCursorTo('#calcTaxBtn');
+              clickTarget('#calcTaxBtn');
+              document.getElementById('taxBreakdownCard').style.display = 'grid';
+              log('Executed gst-tds-calculator.ts: 5% TDS (Section 194D) + 18% GST split computed.');
+              updateTelemetry('Gross Commission: ₹85,000 | TDS Deducted: ₹4,250 | GST Added: ₹15,300.');
+            }
+          },
+          {
+            header: "Step 3: Automated Variance Matching & Shortfall Detection",
+            desc: "Invokes `reconcile-commission-statement.ts` to match received payouts against expected database commissions. Detects ₹4,250 Shortfall on policy POL-2026-1044.",
+            tech: `Universal Identifier: 0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d\nEndpoint: POST /s/commissions/reconcile\nShortfall Formula: Variance = Received (₹20,750) - Expected (₹25,000) = -₹4,250`,
+            action: async () => {
+              await animateCursorTo('#runReconcileBtn');
+              clickTarget('#runReconcileBtn');
+              document.getElementById('shortfallRow').style.background = 'var(--danger-light)';
+              document.getElementById('shortfallStatus').className = 'twenty-pill danger';
+              document.getElementById('shortfallStatus').innerText = 'Shortfall (-₹4,250)';
+              log('POST /s/commissions/reconcile -> Flagged 1 Shortfall Variance (-₹4,250).');
+              updateTelemetry('Matched 3 Payouts | Flagged 1 Shortfall Discrepancy on POL-2026-1044.');
+            }
+          },
+          {
+            header: "Step 4: Real-Time Discrepancy Event Trigger",
+            desc: "Database event trigger `flag-commission-discrepancy.ts` fires automatically on record update, creating an urgent back-office audit ticket.",
+            tech: `Universal Identifier: 1b2c3d4e-5f6a-7b8c-9d0e-1f2a3b4c5d6e\nTrigger: databaseEventTriggerSettings ('commission' updated)\nCondition: varianceStatus === 'Shortfall'`,
+            action: async () => {
+              document.getElementById('alertBanner').style.display = 'block';
+              log('Event Trigger flag-commission-discrepancy.ts dispatched urgent audit alert.');
+              updateTelemetry('Audit Alert generated: InsureCRM recovery ticket #REC-9941 created.');
+            }
+          },
+          {
+            header: "Step 5: Automated Dispute Docket Generation",
+            desc: "Generates formal IRDAI-compliant dispute notice to HDFC ERGO billing division for recovery of ₹4,250 payout variance.",
+            tech: `Dispute Notice Generator: src/utils/irdai-report-generator.ts\nRecipient: payouts@hdfcergo.com\nNotice Ref: IRDAI-DISPUTE-2026-881`,
+            action: async () => {
+              await animateCursorTo('#generateDisputeBtn');
+              clickTarget('#generateDisputeBtn');
+              document.getElementById('disputeNoticeModal').style.display = 'block';
+              log('Generated IRDAI Dispute Notice IRDAI-DISPUTE-2026-881 for HDFC ERGO.');
+              updateTelemetry('Dispute Docket ready for dispatch to insurer finance helpdesk.');
+            }
+          }
+        ]
+      },
+
+      "3": {
+        title: "Household Financial Coverage & Quote Comparator Flow",
+        steps: [
+          {
+            header: "Step 1: Family Group Selection & Profile Loading",
+            desc: "Agent opens the 'Sharma Household' profile (Head: Amit Sharma, Age 42, Annual Income: ₹24 LPA, 4 Family Members).",
+            tech: `Object: familyGroup\nFields: { familyName: 'Sharma Family', membersCount: 4, totalAnnualIncome: 2400000 }`,
+            action: async () => {
+              updateSidebarActive('3');
+              renderScenario3();
+              log('Loaded Family Group record: Sharma Household (4 Members).');
+              updateTelemetry('Family Head: Amit Sharma (42) | Spouse: Sunita (39) | Dependent: Aarav (10) | Parent: Ramabai (68)');
+            }
+          },
+          {
+            header: "Step 2: Household Protection Gap Algorithm",
+            desc: "Analyzes existing policies via `family-tree-visualizer.front-component.tsx`. Detects ₹1.2 Cr Life Insurance gap and missing Senior Citizen Health cover.",
+            tech: `Micro-Frontend: family-tree-visualizer.front-component.tsx\nLife Gap Formula: (10x Income) - Current Life Cover = ₹2.4 Cr - ₹1.2 Cr = ₹1.2 Cr Gap\nHealth Gap: Senior Citizen Parent (Age 68) missing Mediclaim`,
+            action: async () => {
+              await animateCursorTo('#analyzeGapBtn');
+              clickTarget('#analyzeGapBtn');
+              document.getElementById('gapResultsCard').style.display = 'grid';
+              log('Computed Protection Gaps: ₹1.2 Cr Life Gap + Senior Health Cover missing.');
+              updateTelemetry('AI Recommendation: Senior Mediclaim top-up & Term Life enhancement.');
+            }
+          },
+          {
+            header: "Step 3: Multi-Insurer Quote Comparator Engine",
+            desc: "Invokes `policy-quote-comparator.front-component.tsx` across top Indian insurers (Star Health, Care Health, Niva Bupa).",
+            tech: `Micro-Frontend: policy-quote-comparator.front-component.tsx\nUniversal Identifier: 7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d\nFilter: Category = Health | SubCategory = Mediclaim | Age = 68`,
+            action: async () => {
+              await animateCursorTo('#loadQuotesBtn');
+              clickTarget('#loadQuotesBtn');
+              document.getElementById('quoteMatrixView').style.display = 'block';
+              log('Fetched 3 product quotes matching Senior Citizen Health criteria.');
+              updateTelemetry('Care Supreme, Star Senior Red Carpet, and Niva Bupa ReAssure loaded.');
+            }
+          },
+          {
+            header: "Step 4: Claim Settlement Ratio (CSR %) & Best Value Selection",
+            desc: "Compares IRDAI Claim Settlement Ratios (Care Health 95.2%, Star Health 92.4%). Highlights Care Supreme as ★ BEST VALUE.",
+            tech: `CSR Data Source: src/seed-data/insurers.json\nBest Value Criteria: Highest CSR (95.2%) + Day-1 Pre-existing coverage + Cashless Hospital Network`,
+            action: async () => {
+              document.getElementById('bestValueBadge').style.display = 'inline-block';
+              log('Highlighted Care Supreme (Care Health) as ★ BEST VALUE product.');
+              updateTelemetry('Care Supreme selected: Annual Premium ₹28,450 for ₹10 Lakhs Cover.');
+            }
+          },
+          {
+            header: "Step 5: Share Interactive Quote Proposal via WhatsApp",
+            desc: "Generates single-click comparison summary and dispatches interactive quote link directly to Amit Sharma's WhatsApp.",
+            tech: `WhatsApp Link Generator: https://quote.insurecrm.in/c/SHARMA-MED-2026\nPayload: { clientName: 'Amit Sharma', recommendedProduct: 'Care Supreme', premium: 28450 }`,
+            action: async () => {
+              await animateCursorTo('#shareQuoteBtn');
+              clickTarget('#shareQuoteBtn');
+              document.getElementById('shareQuoteBtn').innerText = '✓ Proposal Link Shared via WhatsApp';
+              document.getElementById('shareQuoteBtn').style.background = '#10b981';
+              log('Dispatched quote proposal link to Amit Sharma (+91 98112 33445).');
+              updateTelemetry('Client Proposal successfully delivered.');
+            }
+          }
+        ]
+      },
+
+      "4": {
+        title: "Claim Intimation, CKYC Verification & Document Stepper",
+        steps: [
+          {
+            header: "Step 1: Motor Claim Intimation Logged",
+            desc: "Agent intimates motor accident claim CLM-2026-4401 for vehicle MH-02-CB-9912 (Honda City, repair estimate: ₹85,000).",
+            tech: `Object: claim\nUniversal Identifier: 8b9c0d1e-2f3a-4b5c-6d7e-8f9a0b1c2d3e\nFields: { claimNumber: 'CLM-2026-4401', claimType: 'Motor', claimAmount: 85000, status: 'INTIMATED' }`,
+            action: async () => {
+              updateSidebarActive('4');
+              renderScenario4();
+              log('Logged Motor Claim CLM-2026-4401 (Estimated Amount: ₹85,000).');
+              updateTelemetry('Claimant: Vikram Verma | Vehicle: MH-02-CB-9912 | Incident: Collision');
+            }
+          },
+          {
+            header: "Step 2: CKYC Registry Verification Lookup",
+            desc: "Invokes `verify-ckyc.ts` logic function to validate customer PAN `ABCDE1234F` against CKYC registry.",
+            tech: `Universal Identifier: 2c3d4e5f-6a7b-8c9d-0e1f-2a3b4c5d6e7f\nEndpoint: POST /s/kyc/verify-ckyc\nResult: { ckycNumber: 'CKYC-998241029311', verificationStatus: 'Verified' }`,
+            action: async () => {
+              await animateCursorTo('#verifyCkycBtn');
+              clickTarget('#verifyCkycBtn');
+              document.getElementById('ckycStatusBadge').className = 'twenty-pill success';
+              document.getElementById('ckycStatusBadge').innerText = 'CKYC-998241029311 (VERIFIED)';
+              log('POST /s/kyc/verify-ckyc -> Verified CKYC Record CKYC-998241029311.');
+              updateTelemetry('CKYC Registry verification successful for PAN ABCDE1234F.');
+            }
+          },
+          {
+            header: "Step 3: Document Requirement Checklist Upload",
+            desc: "Agent checks off required documents in `claim-checklist-viewer.front-component.tsx` (Repair Estimate, Driving License, FIR Copy, Cancelled Cheque).",
+            tech: `Micro-Frontend: claim-checklist-viewer.front-component.tsx\nUploaded Documents: [Estimate.pdf, DL_Scan.pdf, FIR_Copy.pdf, Cheque.pdf]\nChecklist Progress: 100% Complete`,
+            action: async () => {
+              await animateCursorTo('#chk1');
+              clickTarget('#chk1');
+              clickTarget('#chk2');
+              clickTarget('#chk3');
+              clickTarget('#chk4');
+              document.getElementById('docProgress').innerText = '4 of 4 Documents Verified (100%)';
+              log('Updated claim document checklist: 4 of 4 uploaded.');
+              updateTelemetry('All mandatory claim documents verified for surveyor inspection.');
+            }
+          },
+          {
+            header: "Step 4: Automated Status Update WhatsApp Notification",
+            desc: "Database event trigger `auto-claim-status-notifier.ts` automatically sends WhatsApp status update to claimant as claim moves to `UNDER_SURVEY`.",
+            tech: `Universal Identifier: 4e5f6a7b-8c9d-0e1f-2a3b-4c5d6e7f8a9c\nTrigger: databaseEventTriggerSettings ('claim' updated)\nMessage: 'Your Claim CLM-2026-4401 has been assigned to Surveyor R. K. Sharma.'`,
+            action: async () => {
+              document.getElementById('step2Circle').className = 'step-circle completed';
+              document.getElementById('step3Circle').className = 'step-circle active';
+              document.getElementById('claimStatusText').innerText = 'UNDER_SURVEY';
+              log('Event Trigger auto-claim-status-notifier.ts dispatched WhatsApp update.');
+              updateTelemetry('Claimant notified via WhatsApp: Surveyor assigned for inspection.');
+            }
+          },
+          {
+            header: "Step 5: Claim Settlement & TAT Performance Metrics",
+            desc: "Claim approved & settled for ₹81,200. Total Turnaround Time (TAT) achieved: 4 Days (vs IRDAI benchmark of 7 Days).",
+            tech: `Settlement Record: { settledAmount: 81200, tatDays: 4, benchmarkDays: 7, status: 'SETTLED' }\nAuto WhatsApp Dispatch: Settlement Advice Sent`,
+            action: async () => {
+              document.getElementById('step3Circle').className = 'step-circle completed';
+              document.getElementById('step4Circle').className = 'step-circle completed';
+              document.getElementById('claimStatusText').className = 'twenty-pill success';
+              document.getElementById('claimStatusText').innerText = 'SETTLED (₹81,200)';
+              document.getElementById('tatMetricCard').style.display = 'block';
+              log('Claim CLM-2026-4401 marked SETTLED for ₹81,200 in 4 TAT days.');
+              updateTelemetry('Workflow Complete: Claim settled inside 4-day SLA window.');
+            }
+          }
+        ]
+      },
+
+      "5": {
+        title: "DPDP Consent Audit & IRDAI Persistency Report Flow",
+        steps: [
+          {
+            header: "Step 1: DPDP Act 2023 Digital Consent Capture",
+            desc: "Invokes `dpdp-consent-handler.ts` to capture customer digital data processing consent under Indian DPDP Act 2023.",
+            tech: `Universal Identifier: 3d4e5f6a-7b8c-9d0e-1f2a-3b4c5d6e7f8a\nEndpoint: POST /s/kyc/dpdp-consent\nAction: GIVE_CONSENT\nAudit Hash: SHA256(DPDP-AUDIT-20260815-7712)`,
+            action: async () => {
+              updateSidebarActive('5');
+              renderScenario5();
+              await animateCursorTo('#grantConsentBtn');
+              clickTarget('#grantConsentBtn');
+              document.getElementById('dpdpStatusBadge').className = 'twenty-pill success';
+              document.getElementById('dpdpStatusBadge').innerText = 'CONSENTED (DPDP-AUDIT-20260815-7712)';
+              log('POST /s/kyc/dpdp-consent -> Consent logged with audit hash DPDP-AUDIT-20260815-7712.');
+              updateTelemetry('DPDP Act 2023 audit record generated & stored in immutable audit log.');
+            }
+          },
+          {
+            header: "Step 2: Policy Cohort Persistency Scanning",
+            desc: "Invokes `persistency-calculator.ts` to process policy retention across 1,240 policies issued in the 2025 cohort.",
+            tech: `Universal Identifier: 5f6a7b8c-9d0e-1f2a-3b4c-5d6e7f8a9b0d\nEndpoint: GET /s/reports/persistency\nCohort Size: 1,240 Policies Issued`,
+            action: async () => {
+              await animateCursorTo('#runPersistencyBtn');
+              clickTarget('#runPersistencyBtn');
+              log('GET /s/reports/persistency -> Scanning 2025 policy cohorts.');
+              updateTelemetry('Cohort Ingestion complete: 1,240 active/expired policy records loaded.');
+            }
+          },
+          {
+            header: "Step 3: Multi-Milestone Persistency Ratio Computation",
+            desc: "Calculates 13th, 25th, 37th, and 61st month policy persistency ratios for IRDAI regulatory compliance.",
+            tech: `Persistency Engine: src/utils/irdai-report-generator.ts\nFormulas: P_13m = (Active_13 / Total) * 100\nResult: 13th Month = 88.4% | 25th Month = 81.2% | 37th Month = 74.5% | 61st Month = 68.0%`,
+            action: async () => {
+              document.getElementById('persistencyResultsCard').style.display = 'block';
+              log('Computed Persistency: 13th Month (88.4%), 25th Month (81.2%), 37th Month (74.5%).');
+              updateTelemetry('13th-Month Persistency 88.4% exceeds IRDAI minimum threshold (75%).');
+            }
+          },
+          {
+            header: "Step 4: IRDAI Form B-AR Compliance Quarterly Return",
+            desc: "Formats official IRDAI Form B-AR quarterly persistency return. Grants agency EXCELLENT regulatory compliance rating.",
+            tech: `Report Formatter: IRDAIReturnRegister\nRating Rules: >= 85% = EXCELLENT | >= 75% = GOOD | < 65% = AUDIT_FLAGGED\nRating Granted: EXCELLENT`,
+            action: async () => {
+              document.getElementById('irdaiRatingBadge').style.display = 'inline-block';
+              log('Generated IRDAI Form B-AR Return. Rating: EXCELLENT.');
+              updateTelemetry('Compliance Complete: Agency cleared for IRDAI license renewal.');
+            }
+          }
+        ]
+      }
+    };
+
+    /* ==========================================================================
+       VIEW RENDERING FUNCTIONS (Matching Twenty CRM Table & Grid Views)
+       ========================================================================== */
+
+    function updateSidebarActive(scenarioId) {
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      const activeNav = document.getElementById(`nav${scenarioId}`);
+      if (activeNav) activeNav.classList.add('active');
+    }
+
+    function renderScenario1() {
+      document.getElementById('crmViewTitle').innerText = 'All Policies';
+      const stage = document.getElementById('workspaceStage');
+      stage.innerHTML = `
+        <div class="twenty-table-card" id="policyTable">
+          <table class="twenty-table">
+            <thead>
+              <tr>
+                <th style="width:30px;"><input type="checkbox"></th>
+                <th># Policy Number</th>
+                <th>Policy Type</th>
+                <th>Policy Sub Type</th>
+                <th>Status</th>
+                <th>$ Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" checked></td>
+                <td><span style="font-weight:600; color:var(--primary);">123456</span></td>
+                <td><span class="twenty-pill">Life</span></td>
+                <td><span class="twenty-pill">Term</span></td>
+                <td><span id="statusPill" class="twenty-pill warning">Proposal</span></td>
+                <td>₹18,450</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Policy Drawer Component Overlay -->
+        <div style="margin-top:20px; background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:20px; box-shadow:var(--shadow-md);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div>
+              <div style="font-size:16px; font-weight:700;">Policy Record: POL-2026-9842</div>
+              <div style="font-size:12px; color:var(--text-muted);">Insured: Rajesh Kumar • Insurer: HDFC ERGO General Insurance</div>
+            </div>
+            <button id="computeRiskBtn" class="control-btn primary">⚡ Compute AI Renewal Risk</button>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <div class="form-group">
+                <label class="form-label">Product Name</label>
+                <input class="form-input" value="Optima Secure Health Plan (UIN: HDFHLIP21542V022021)" readonly>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Next Renewal Due Date</label>
+                <input class="form-input" value="19-Aug-2026 (Due in 4 Days)" readonly style="color:var(--danger-text); font-weight:700;">
+              </div>
+            </div>
+
+            <div>
+              <div style="background:var(--bg-card-subtle); padding:12px; border-radius:6px; border:1px solid var(--border);">
+                <div style="font-size:11px; font-weight:600; color:var(--text-muted);">AI Renewal Risk Score</div>
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-top:4px;">
+                  <span id="riskBadge" class="twenty-pill">NOT COMPUTED</span>
+                  <span style="font-size:20px; font-weight:800;">78 / 100</span>
+                </div>
+                <div id="riskFactorsCard" style="display:none; margin-top:8px; font-size:11px; color:var(--danger-text); line-height:1.4;">
+                  • Overdue monthly NACH auto-debit failure<br>
+                  • Only 4 days remaining before policy lapse
+                </div>
+              </div>
+
+              <div style="margin-top:12px;">
+                <div class="form-group">
+                  <label class="form-label">Gupshup WhatsApp Template</label>
+                  <select id="templateSelect" class="form-select">
+                    <option value="insurecrm_renewal_en">English Renewal (insurecrm_renewal_en)</option>
+                    <option value="insurecrm_renewal_hi">Hindi Renewal (insurecrm_renewal_hi)</option>
+                  </select>
+                </div>
+                <button id="sendWhatsappBtn" class="control-btn" style="width:100%; background:var(--success); border-color:var(--success); color:#fff;">
+                  💬 Send 1-Click WhatsApp Payment Link
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="phoneMockupContainer" style="display:none; margin-top:20px;">
+          <div style="max-width:320px; margin:0 auto; background:#075e54; border-radius:16px; padding:12px; color:#fff; font-size:12px;">
+            <div style="font-weight:700; margin-bottom:8px;">🛡️ Gupshup WhatsApp Payment Alert</div>
+            <div style="background:#fff; color:#111; padding:10px; border-radius:8px; line-height:1.4; font-size:11px;">
+              <strong>नमस्ते Rajesh Kumar Ji,</strong><br>
+              आपकी HDFC ERGO पॉलिसी (POL-2026-9842) का प्रीमियम ₹18,450 देय है।<br>
+              <div id="payUpiBtn" style="margin-top:8px; background:#25d366; color:#fff; text-align:center; padding:6px; border-radius:4px; font-weight:700; cursor:pointer;">
+                👉 Pay ₹18,450 via Razorpay UPI
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderScenario2() {
+      document.getElementById('crmViewTitle').innerText = 'All Commissions';
+      const stage = document.getElementById('workspaceStage');
+      stage.innerHTML = `
+        <div class="twenty-table-card">
+          <div style="padding:14px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-weight:700;">Insurer Statement: HDFC-2026-Q2-089</div>
+              <div style="font-size:12px; color:var(--text-muted);">Reconciliation Workspace</div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <button id="calcTaxBtn" class="control-btn primary">⚖️ Compute Section 194D TDS & GST</button>
+              <button id="runReconcileBtn" class="control-btn" style="background:var(--purple); color:#fff;">🔍 Match Variance</button>
+            </div>
+          </div>
+
+          <div id="taxBreakdownCard" class="grid-3" style="display:none; padding:12px 14px; background:var(--bg-card-subtle); border-bottom:1px solid var(--border);">
+            <div><span style="font-size:11px; color:var(--text-muted);">Gross Payout</span><div style="font-size:16px; font-weight:700;">₹85,000</div></div>
+            <div><span style="font-size:11px; color:var(--danger-text);">5% TDS (Section 194D)</span><div style="font-size:16px; font-weight:700; color:var(--danger-text);">-₹4,250</div></div>
+            <div><span style="font-size:11px; color:var(--success-text);">18% GST</span><div style="font-size:16px; font-weight:700; color:var(--success-text);">+₹15,300</div></div>
+          </div>
+
+          <table class="twenty-table">
+            <thead>
+              <tr>
+                <th>Policy Number</th>
+                <th>Expected Comm.</th>
+                <th>Received Amount</th>
+                <th>Variance</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>POL-2026-8812</td><td>₹20,000</td><td>₹20,000</td><td>₹0</td><td><span class="twenty-pill success">Match</span></td></tr>
+              <tr><td>POL-2026-9915</td><td>₹15,000</td><td>₹15,000</td><td>₹0</td><td><span class="twenty-pill success">Match</span></td></tr>
+              <tr id="shortfallRow"><td>POL-2026-1044</td><td>₹25,000</td><td>₹20,750</td><td style="color:var(--danger-text); font-weight:700;">-₹4,250</td><td><span id="shortfallStatus" class="twenty-pill warning">Pending</span></td></tr>
+              <tr><td>POL-2026-1120</td><td>₹25,000</td><td>₹25,000</td><td>₹0</td><td><span class="twenty-pill success">Match</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="alertBanner" style="display:none; margin-top:16px; background:var(--danger-light); border:1px solid var(--danger); padding:14px; border-radius:8px; display:flex; align-items:center; justify-content:space-between;">
+          <div>
+            <div style="font-weight:700; color:var(--danger-text);">🚨 Shortfall Discrepancy Alert Flagged</div>
+            <div style="font-size:12px; color:var(--text-muted);">Payout variance on POL-2026-1044 is -₹4,250 below expected rate.</div>
+          </div>
+          <button id="generateDisputeBtn" class="control-btn primary">Generate Dispute Docket</button>
+        </div>
+
+        <div id="disputeNoticeModal" style="display:none; margin-top:16px;" class="twenty-table-card">
+          <div style="padding:14px; font-weight:700; color:var(--danger-text);">IRDAI Dispute Notice Generated</div>
+          <div style="font-family:var(--font-mono); font-size:11px; color:#a5d6ff; background:#0f172a; padding:12px; margin:0 14px 14px; border-radius:6px;">
+TO: payouts@hdfcergo.com<br>
+REF: IRDAI-DISPUTE-2026-881<br>
+SUBJECT: Notice of Shortfall Variance in Commission Statement HDFC-2026-Q2-089<br>
+Expected: ₹25,000 | Received: ₹20,750 | Variance: -₹4,250
+          </div>
+        </div>
+      `;
+    }
+
+    function renderScenario3() {
+      document.getElementById('crmViewTitle').innerText = 'All Family Groups';
+      const stage = document.getElementById('workspaceStage');
+      stage.innerHTML = `
+        <div class="twenty-table-card">
+          <div style="padding:14px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border);">
+            <div>
+              <div style="font-weight:700;">Family Group: Sharma Household</div>
+              <div style="font-size:12px; color:var(--text-muted);">Head: Amit Sharma (42) • Annual Income: ₹24,00,000</div>
+            </div>
+            <button id="analyzeGapBtn" class="control-btn primary">⚡ Analyze Protection Gaps</button>
+          </div>
+
+          <div id="gapResultsCard" class="grid-2" style="display:none; padding:14px; background:var(--danger-light); border-bottom:1px solid var(--danger);">
+            <div>
+              <div style="font-weight:700; color:var(--danger-text);">⚠️ Life Insurance Coverage Gap</div>
+              <div style="font-size:12px; color:var(--text-muted);">Requirement: ₹2.4 Cr | Current: ₹1.2 Cr | Gap: ₹1.2 Cr</div>
+            </div>
+            <div>
+              <div style="font-weight:700; color:var(--danger-text);">⚠️ Senior Citizen Health Cover Missing</div>
+              <div style="font-size:12px; color:var(--text-muted);">Mother (Age 68) lacks Mediclaim cover.</div>
+              <button id="loadQuotesBtn" class="control-btn primary" style="margin-top:6px;">Compare Quotes</button>
+            </div>
+          </div>
+
+          <div id="quoteMatrixView" style="display:none; padding:14px;">
+            <div style="font-weight:700; font-size:14px; margin-bottom:10px;">Senior Citizen Health Quotes</div>
+            <div class="grid-3">
+              <div style="background:var(--bg-card-subtle); padding:12px; border-radius:6px; border:1px solid var(--border);">
+                <div style="font-weight:700;">Star Senior Red Carpet</div>
+                <div style="font-size:16px; font-weight:800; margin:6px 0;">₹31,200/yr</div>
+                <div style="font-size:11px; color:var(--success-text);">IRDAI CSR: 92.4%</div>
+              </div>
+              <div style="background:var(--bg-card-subtle); padding:12px; border-radius:6px; border:2px solid var(--success); position:relative;">
+                <span id="bestValueBadge" class="twenty-pill success" style="position:absolute; top:-8px; right:8px; display:none;">★ BEST VALUE</span>
+                <div style="font-weight:700;">Care Supreme Senior</div>
+                <div style="font-size:16px; font-weight:800; color:var(--success-text); margin:6px 0;">₹28,450/yr</div>
+                <div style="font-size:11px; color:var(--success-text);">IRDAI CSR: 95.2%</div>
+              </div>
+              <div style="background:var(--bg-card-subtle); padding:12px; border-radius:6px; border:1px solid var(--border);">
+                <div style="font-weight:700;">Niva Bupa ReAssure</div>
+                <div style="font-size:16px; font-weight:800; margin:6px 0;">₹33,900/yr</div>
+                <div style="font-size:11px; color:var(--success-text);">IRDAI CSR: 91.8%</div>
+              </div>
+            </div>
+            <button id="shareQuoteBtn" class="control-btn" style="width:100%; margin-top:14px; background:var(--success); color:#fff;">
+              📲 Share Proposal Link via WhatsApp
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderScenario4() {
+      document.getElementById('crmViewTitle').innerText = 'All Claims';
+      const stage = document.getElementById('workspaceStage');
+      stage.innerHTML = `
+        <div class="twenty-table-card" style="padding:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <div>
+              <div style="font-weight:700;">Claim Intimation: CLM-2026-4401</div>
+              <div style="font-size:12px; color:var(--text-muted);">Vehicle: MH-02-CB-9912 (Honda City)</div>
+            </div>
+            <span id="claimStatusText" class="twenty-pill">INTIMATED</span>
+          </div>
+
+          <div class="stepper">
+            <div class="step-item active"><div class="step-circle">1</div><div style="font-size:11px;">Intimated</div></div>
+            <div class="step-item"><div id="step2Circle" class="step-circle">2</div><div style="font-size:11px;">Docs Review</div></div>
+            <div class="step-item"><div id="step3Circle" class="step-circle">3</div><div style="font-size:11px;">TPA Approval</div></div>
+            <div class="step-item"><div id="step4Circle" class="step-circle">4</div><div style="font-size:11px;">Settled</div></div>
+          </div>
+
+          <div class="grid-2">
+            <div>
+              <div class="form-group">
+                <label class="form-label">PAN Number</label>
+                <input class="form-input" value="ABCDE1234F" readonly>
+              </div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
+                <span class="form-label">CKYC Verification</span>
+                <span id="ckycStatusBadge" class="twenty-pill warning">NOT VERIFIED</span>
+              </div>
+              <button id="verifyCkycBtn" class="control-btn primary" style="width:100%;">🔍 Verify CKYC Registry</button>
+            </div>
+
+            <div>
+              <div class="form-label" style="margin-bottom:6px;">Claim Documents Checklist</div>
+              <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                <label><input type="checkbox" id="chk1"> Repair Estimate (₹85,000)</label>
+                <label><input type="checkbox" id="chk2"> Driving License Copy</label>
+                <label><input type="checkbox" id="chk3"> Police FIR Incident Copy</label>
+                <label><input type="checkbox" id="chk4"> Cancelled Cheque / Bank Details</label>
+              </div>
+              <div id="docProgress" style="margin-top:8px; font-size:11px; color:var(--text-muted);">0 of 4 Documents Verified</div>
+            </div>
+          </div>
+
+          <div id="tatMetricCard" style="display:none; margin-top:14px; background:var(--success-light); border:1px solid var(--success); padding:10px; border-radius:6px; font-size:12px; color:var(--success-text);">
+            🎉 Claim Settled inside SLA Window (TAT: 4 Days vs 7 Days Benchmark).
+          </div>
+        </div>
+      `;
+    }
+
+    function renderScenario5() {
+      document.getElementById('crmViewTitle').innerText = 'Workflows & Compliance';
+      const stage = document.getElementById('workspaceStage');
+      stage.innerHTML = `
+        <div class="twenty-table-card" style="padding:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+            <div>
+              <div style="font-weight:700;">DPDP Consent & IRDAI Returns Workspace</div>
+              <div style="font-size:12px; color:var(--text-muted);">Regulatory Compliance Engine</div>
+            </div>
+            <span id="irdaiRatingBadge" class="twenty-pill success" style="display:none;">EXCELLENT (88.4% 13th-M)</span>
+          </div>
+
+          <div class="grid-2">
+            <div style="background:var(--bg-card-subtle); padding:12px; border-radius:6px; border:1px solid var(--border);">
+              <div style="font-weight:700; margin-bottom:4px;">DPDP Act 2023 Digital Consent</div>
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-top:8px;">
+                <span id="dpdpStatusBadge" class="twenty-pill warning">NOT REQUESTED</span>
+                <button id="grantConsentBtn" class="control-btn primary">✍️ Capture Consent</button>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card-subtle); padding:12px; border-radius:6px; border:1px solid var(--border);">
+              <div style="font-weight:700; margin-bottom:4px;">IRDAI Cohort Persistency</div>
+              <button id="runPersistencyBtn" class="control-btn" style="width:100%; margin-top:8px; background:var(--purple); color:#fff;">
+                📊 Compute Persistency Ratios
+              </button>
+            </div>
+          </div>
+
+          <div id="persistencyResultsCard" style="display:none; margin-top:14px; background:var(--bg-card-subtle); padding:12px; border-radius:6px;">
+            <div style="font-weight:700; margin-bottom:10px; font-size:12px;">2025 Cohort Retention Ratios (1,240 Policies)</div>
+            <div style="font-size:12px; display:flex; justify-content:space-between; margin-bottom:4px;">
+              <span>13th Month Persistency (Benchmark >= 75%)</span>
+              <strong style="color:var(--success-text);">88.4% (Excellent)</strong>
+            </div>
+            <div style="height:6px; background:var(--border); border-radius:3px; overflow:hidden;">
+              <div style="width:88.4%; height:100%; background:var(--success);"></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ==========================================================================
+       AUTO-PLAY ENGINE CONTROLS
+       ========================================================================== */
+
+    function switchScenario(id) {
+      currentScenarioId = id;
+      currentStepIndex = 0;
+      document.getElementById('scenarioSelect').value = id;
+      loadStep(0);
+    }
+
+    function loadStep(index) {
+      const scenario = scenarios[currentScenarioId];
+      if (!scenario || index < 0 || index >= scenario.steps.length) return;
+
+      currentStepIndex = index;
+      const step = scenario.steps[index];
+
+      document.getElementById('stepBadge').innerText = `Step ${index + 1} / ${scenario.steps.length}`;
+      document.getElementById('stepHeader').innerHTML = `<span>🚀</span> ${step.header}`;
+      document.getElementById('stepDesc').innerText = step.desc;
+      document.getElementById('techDetails').innerText = step.tech;
+
+      step.action();
+    }
+
+    function togglePlayPause() {
+      if (isPlaying) {
+        pauseTour();
+      } else {
+        startTour();
+      }
+    }
+
+    function startTour() {
+      isPlaying = true;
+      document.getElementById('playIcon').innerText = '⏸';
+      document.getElementById('playText').innerText = 'Pause Tour';
+      document.getElementById('virtual-cursor').style.display = 'block';
+
+      log('Auto-play tour started.');
+      runAutoLoop();
+    }
+
+    function pauseTour() {
+      isPlaying = false;
+      document.getElementById('playIcon').innerText = '▶';
+      document.getElementById('playText').innerText = 'Resume Tour';
+      document.getElementById('virtual-cursor').style.display = 'none';
+
+      if (autoPlayTimer) clearTimeout(autoPlayTimer);
+      log('Auto-play tour paused.');
+    }
+
+    function runAutoLoop() {
+      if (!isPlaying) return;
+
+      const scenario = scenarios[currentScenarioId];
+      if (currentStepIndex >= scenario.steps.length) {
+        let nextScen = parseInt(currentScenarioId) + 1;
+        if (nextScen > 5) nextScen = 1;
+        switchScenario(nextScen.toString());
+      }
+
+      loadStep(currentStepIndex);
+
+      autoPlayTimer = setTimeout(() => {
+        if (isPlaying) {
+          currentStepIndex++;
+          runAutoLoop();
+        }
+      }, 4000 / playbackSpeed);
+    }
+
+    function nextStep() {
+      pauseTour();
+      const scenario = scenarios[currentScenarioId];
+      if (currentStepIndex < scenario.steps.length - 1) {
+        loadStep(currentStepIndex + 1);
+      }
+    }
+
+    function prevStep() {
+      pauseTour();
+      if (currentStepIndex > 0) {
+        loadStep(currentStepIndex - 1);
+      }
+    }
+
+    function resetCurrentScenario() {
+      pauseTour();
+      loadStep(0);
+    }
+
+    function setSpeed(speed) {
+      playbackSpeed = speed;
+      document.querySelectorAll('.speed-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText === `${speed}x`);
+      });
+      log(`Playback speed set to ${speed}x.`);
+    }
+
+    async function animateCursorTo(selector) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+
+      const rect = el.getBoundingClientRect();
+      const cursor = document.getElementById('virtual-cursor');
+      cursor.style.display = 'block';
+      cursor.style.left = `${rect.left + rect.width / 2}px`;
+      cursor.style.top = `${rect.top + rect.height / 2}px`;
+
+      await new Promise(r => setTimeout(r, 500 / playbackSpeed));
+    }
+
+    function clickTarget(selector) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+
+      const cursor = document.getElementById('virtual-cursor');
+      cursor.classList.add('click-animation');
+
+      const ripple = document.createElement('div');
+      ripple.className = 'click-ripple';
+      cursor.appendChild(ripple);
+
+      setTimeout(() => {
+        cursor.classList.remove('click-animation');
+        ripple.remove();
+      }, 400);
+
+      el.click();
+    }
+
+    function highlightTarget(selector) {
+      document.querySelectorAll('.auto-target').forEach(e => e.classList.remove('target-active'));
+      const el = document.querySelector(selector);
+      if (el) {
+        el.classList.add('auto-target', 'target-active');
+      }
+    }
+
+    function log(msg) {
+      const console = document.getElementById('logConsole');
+      const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+      entry.innerHTML = `<span style="color:var(--text-dim);">[${time}]</span> ${msg}`;
+      console.appendChild(entry);
+      console.scrollTop = console.scrollHeight;
+    }
+
+    function updateTelemetry(msg) {
+      document.getElementById('telemetryBox').innerText = msg;
+    }
+
+    // INITIALIZATION ON LOAD
+    window.addEventListener('DOMContentLoaded', () => {
+      switchScenario('1');
+    });
+  </script>
+</body>
+</html>
