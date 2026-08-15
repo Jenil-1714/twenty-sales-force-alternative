@@ -9,8 +9,8 @@ export default defineField({
   description: 'Smoker Status',
   icon: 'IconFlame',
   options: [
-    { id: '1', value: 'Smoker', label: 'Smoker', color: 'red', position: 0 },
-    { id: '2', value: 'NonSmoker', label: 'Non-Smoker', color: 'green', position: 1 },
-    { id: '3', value: 'Former', label: 'Former', color: 'orange', position: 2 },
+    { id: 'fef11e13-6ee8-4223-8689-951b77efd001', value: 'SMOKER', label: 'Smoker', color: 'red', position: 0 },
+    { id: 'fef11e13-6ee8-4223-8689-951b77efd002', value: 'NON_SMOKER', label: 'Non-Smoker', color: 'green', position: 1 },
+    { id: 'fef11e13-6ee8-4223-8689-951b77efd003', value: 'FORMER', label: 'Former', color: 'orange', position: 2 },
   ]
 });

@@ -135,7 +135,7 @@ export default defineObject({
     { universalIdentifier: U.POLICY_LOGIN_NUMBER_FIELD_UNIVERSAL_IDENTIFIER, type: FieldType.TEXT, name: 'loginNumber', label: 'Login Number', description: 'Login Number', icon: 'IconHash' },
     { universalIdentifier: U.POLICY_VEHICLE_DETAILS_FIELD_UNIVERSAL_IDENTIFIER, type: FieldType.RAW_JSON, name: 'vehicleDetails', label: 'Vehicle Details', description: 'Vehicle Details JSON', icon: 'IconCar' },
     { universalIdentifier: U.POLICY_HEALTH_DETAILS_FIELD_UNIVERSAL_IDENTIFIER, type: FieldType.RAW_JSON, name: 'healthDetails', label: 'Health Details', description: 'Health Details JSON', icon: 'IconHeartbeat' },
-    { universalIdentifier: U.POLICY_DOCUMENTS_FIELD_UNIVERSAL_IDENTIFIER, type: FieldType.FILES, name: 'documents', label: 'Documents', description: 'Documents', icon: 'IconFiles' },
+    { universalIdentifier: U.POLICY_DOCUMENTS_FIELD_UNIVERSAL_IDENTIFIER, type: FieldType.FILES, name: 'documents', label: 'Documents', description: 'Documents', icon: 'IconFiles', universalSettings: { maxNumberOfValues: 10 } },
     {
       universalIdentifier: U.POLICY_PRIORITY_FIELD_UNIVERSAL_IDENTIFIER,
       type: FieldType.SELECT,

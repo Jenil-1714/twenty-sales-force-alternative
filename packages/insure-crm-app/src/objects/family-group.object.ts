@@ -94,7 +94,7 @@ export default defineObject({
     {
       universalIdentifier: 'e7b2e078-21e6-4458-8c19-7bcc35e39c42',
       type: FieldType.ADDRESS,
-      name: 'address',
+      name: 'primaryAddress',
       label: 'Address',
       description: 'Address',
       icon: 'IconMapPin',

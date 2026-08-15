@@ -56,7 +56,8 @@ export default defineObject({
       name: 'logo',
       label: 'Logo',
       description: 'Insurer Logo',
-      icon: 'IconPhoto'
+      icon: 'IconPhoto',
+      universalSettings: { maxNumberOfValues: 10 }
     },
     {
       universalIdentifier: U.INSURER_CONTACT_EMAIL_FIELD_UNIVERSAL_IDENTIFIER,
@@ -101,7 +102,7 @@ export default defineObject({
     {
       universalIdentifier: U.INSURER_ADDRESS_FIELD_UNIVERSAL_IDENTIFIER,
       type: FieldType.ADDRESS,
-      name: 'address',
+      name: 'registeredAddress',
       label: 'Address',
       description: 'Address',
       icon: 'IconMapPin'

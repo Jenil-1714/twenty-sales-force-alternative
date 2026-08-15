@@ -35,12 +35,12 @@ export default defineObject({
       description: 'KYC Type',
       icon: 'IconCategory',
       options: [
-        { id: '1', value: 'Aadhaar', label: 'Aadhaar', color: 'blue', position: 0 },
-        { id: '2', value: 'PAN', label: 'PAN', color: 'green', position: 1 },
-        { id: '3', value: 'VoterID', label: 'Voter ID', color: 'purple', position: 2 },
-        { id: '4', value: 'Passport', label: 'Passport', color: 'orange', position: 3 },
-        { id: '5', value: 'DrivingLicense', label: 'Driving License', color: 'red', position: 4 },
-        { id: '6', value: 'CKYC', label: 'CKYC', color: 'sky', position: 5 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f01', value: 'AADHAAR', label: 'Aadhaar', color: 'blue', position: 0 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f02', value: 'PAN', label: 'PAN', color: 'green', position: 1 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f03', value: 'VOTER_ID', label: 'Voter ID', color: 'purple', position: 2 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f04', value: 'PASSPORT', label: 'Passport', color: 'orange', position: 3 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f05', value: 'DRIVING_LICENSE', label: 'Driving License', color: 'red', position: 4 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f06', value: 'CKYC', label: 'CKYC', color: 'sky', position: 5 },
       ]
     },
     {
@@ -50,12 +50,12 @@ export default defineObject({
       label: 'Verification Status',
       description: 'Verification Status',
       icon: 'IconStatusChange',
-      defaultValue: "'Pending'",
+      defaultValue: "'PENDING'",
       options: [
-        { id: '1', value: 'Pending', label: 'Pending', color: 'gray', position: 0 },
-        { id: '2', value: 'Verified', label: 'Verified', color: 'green', position: 1 },
-        { id: '3', value: 'Failed', label: 'Failed', color: 'red', position: 2 },
-        { id: '4', value: 'Expired', label: 'Expired', color: 'orange', position: 3 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f07', value: 'PENDING', label: 'Pending', color: 'gray', position: 0 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f08', value: 'VERIFIED', label: 'Verified', color: 'green', position: 1 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f09', value: 'FAILED', label: 'Failed', color: 'red', position: 2 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f0a', value: 'EXPIRED', label: 'Expired', color: 'orange', position: 3 },
       ]
     },
     {
@@ -90,11 +90,11 @@ export default defineObject({
       description: 'Verification Method',
       icon: 'IconSettings',
       options: [
-        { id: '1', value: 'Manual', label: 'Manual', color: 'gray', position: 0 },
-        { id: '2', value: 'eKYC_Aadhaar', label: 'eKYC Aadhaar', color: 'blue', position: 1 },
-        { id: '3', value: 'DigiLocker', label: 'DigiLocker', color: 'green', position: 2 },
-        { id: '4', value: 'VideoKYC', label: 'Video KYC', color: 'purple', position: 3 },
-        { id: '5', value: 'CKYC_Lookup', label: 'CKYC Lookup', color: 'orange', position: 4 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f0b', value: 'MANUAL', label: 'Manual', color: 'gray', position: 0 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f0c', value: 'E_KYC_AADHAAR', label: 'eKYC Aadhaar', color: 'blue', position: 1 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f0d', value: 'DIGI_LOCKER', label: 'DigiLocker', color: 'green', position: 2 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f0e', value: 'VIDEO_KYC', label: 'Video KYC', color: 'purple', position: 3 },
+        { id: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f0f', value: 'CKYC_LOOKUP', label: 'CKYC Lookup', color: 'orange', position: 4 },
       ]
     },
     {
@@ -104,6 +104,7 @@ export default defineObject({
       label: 'Document Front',
       description: 'Document Front',
       icon: 'IconFile',
+      universalSettings: { maxNumberOfValues: 10 },
     },
     {
       universalIdentifier: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f24',
@@ -112,6 +113,7 @@ export default defineObject({
       label: 'Document Back',
       description: 'Document Back',
       icon: 'IconFile',
+      universalSettings: { maxNumberOfValues: 10 },
     },
     {
       universalIdentifier: '5b8d2c6f-3e9a-4f0b-9c2d-8e0b4a3c2f25',

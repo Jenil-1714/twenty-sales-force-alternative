@@ -35,11 +35,11 @@ export default defineObject({
       description: 'Type of commission',
       icon: 'IconCategory',
       options: [
-        { id: '1', value: 'FirstYear', label: 'First Year', color: 'blue', position: 0 },
-        { id: '2', value: 'Renewal', label: 'Renewal', color: 'green', position: 1 },
-        { id: '3', value: 'Override', label: 'Override', color: 'purple', position: 2 },
-        { id: '4', value: 'Bonus', label: 'Bonus', color: 'yellow', position: 3 },
-        { id: '5', value: 'Clawback', label: 'Clawback', color: 'red', position: 4 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a0', value: 'FIRST_YEAR', label: 'First Year', color: 'blue', position: 0 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a1', value: 'RENEWAL', label: 'Renewal', color: 'green', position: 1 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a2', value: 'OVERRIDE', label: 'Override', color: 'purple', position: 2 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a3', value: 'BONUS', label: 'Bonus', color: 'yellow', position: 3 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a4', value: 'CLAWBACK', label: 'Clawback', color: 'red', position: 4 },
       ]
     },
     {
@@ -81,12 +81,12 @@ export default defineObject({
       label: 'Variance Status',
       description: 'Variance Status',
       icon: 'IconList',
-      defaultValue: "'Pending'",
+      defaultValue: "'PENDING'",
       options: [
-        { id: '1', value: 'Match', label: 'Match', color: 'green', position: 0 },
-        { id: '2', value: 'Shortfall', label: 'Shortfall', color: 'red', position: 1 },
-        { id: '3', value: 'Excess', label: 'Excess', color: 'orange', position: 2 },
-        { id: '4', value: 'Pending', label: 'Pending', color: 'gray', position: 3 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a5', value: 'MATCH', label: 'Match', color: 'green', position: 0 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a6', value: 'SHORTFALL', label: 'Shortfall', color: 'red', position: 1 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a7', value: 'EXCESS', label: 'Excess', color: 'orange', position: 2 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a8', value: 'PENDING', label: 'Pending', color: 'gray', position: 3 },
       ]
     },
     {
@@ -160,13 +160,13 @@ export default defineObject({
       label: 'Status',
       description: 'Status',
       icon: 'IconStatusChange',
-      defaultValue: "'Expected'",
+      defaultValue: "'EXPECTED'",
       options: [
-        { id: '1', value: 'Expected', label: 'Expected', color: 'gray', position: 0 },
-        { id: '2', value: 'Received', label: 'Received', color: 'green', position: 1 },
-        { id: '3', value: 'PartiallyReceived', label: 'Partially Received', color: 'orange', position: 2 },
-        { id: '4', value: 'Disputed', label: 'Disputed', color: 'red', position: 3 },
-        { id: '5', value: 'WrittenOff', label: 'Written Off', color: 'purple', position: 4 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02a9', value: 'EXPECTED', label: 'Expected', color: 'gray', position: 0 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02aa', value: 'RECEIVED', label: 'Received', color: 'green', position: 1 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02ab', value: 'PARTIALLY_RECEIVED', label: 'Partially Received', color: 'orange', position: 2 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02ac', value: 'DISPUTED', label: 'Disputed', color: 'red', position: 3 },
+        { id: '3f9b2d8e-7e9a-4e2b-81d3-6490333d02ad', value: 'WRITTEN_OFF', label: 'Written Off', color: 'purple', position: 4 },
       ]
     }
   ]
