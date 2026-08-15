@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsureCRM — Renewal & WhatsApp Sequence Diagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text-main); padding: 40px 24px; line-height: 1.5; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    header { margin-bottom: 32px; border-bottom: 1px solid var(--surface-border); padding-bottom: 20px; }
+    .badge { display: inline-block; background: var(--primary-light); color: var(--primary); font-weight: 600; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #bfdbfe; margin-bottom: 12px; }
+    h1 { font-size: 28px; font-weight: 700; color: var(--text-main); letter-spacing: -0.02em; }
+    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 6px; }
+
+    .canvas-card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+    svg { width: 100%; height: auto; display: block; }
+    
+    .actor-title { font-size: 12px; font-weight: 700; fill: #ffffff; }
+    .actor-sub { font-size: 10px; fill: #e2e8f0; }
+    .seq-line { stroke: #cbd5e1; stroke-width: 1.5; stroke-dasharray: 4 4; }
+    .msg-line { stroke: #2563eb; stroke-width: 1.5; }
+    .msg-text { font-size: 11px; font-weight: 600; fill: #1e293b; }
+    .note-box { fill: #fef3c7; stroke: #f59e0b; stroke-width: 1; }
+    .note-text { font-size: 10px; font-weight: 600; fill: #92400e; }
+
+    footer { margin-top: 32px; text-align: center; color: var(--text-muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">SEQUENCE DIAGRAM</span>
+      <h1>InsureCRM Automated Renewal & Gupshup WhatsApp Sequence</h1>
+      <p class="subtitle">Time-ordered execution flow from daily CRON scan to WhatsApp 1-Click payment & status update</p>
+    </header>
+
+    <div class="canvas-card">
+      <svg viewBox="0 0 1100 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+          </marker>
+          <marker id="arrow-green" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a" />
+          </marker>
+        </defs>
+
+        <!-- ACTOR HEADERS -->
+        <!-- Actor 1: CRON Scheduler -->
+        <g transform="translate(40, 20)">
+          <rect width="150" height="45" rx="6" fill="#1e293b"/>
+          <text x="12" y="22" class="actor-title">1. CRON Trigger</text>
+          <text x="12" y="36" class="actor-sub">Daily 8:00 AM IST</text>
+        </g>
+        <line x1="115" y1="65" x2="115" y2="650" class="seq-line"/>
+
+        <!-- Actor 2: Logic Function -->
+        <g transform="translate(240, 20)">
+          <rect width="170" height="45" rx="6" fill="#2563eb"/>
+          <text x="12" y="22" class="actor-title">2. Renewal Logic</text>
+          <text x="12" y="36" class="actor-sub">check-expiring-policies</text>
+        </g>
+        <line x1="325" y1="65" x2="325" y2="650" class="seq-line"/>
+
+        <!-- Actor 3: Risk Engine -->
+        <g transform="translate(450, 20)">
+          <rect width="170" height="45" rx="6" fill="#475569"/>
+          <text x="12" y="22" class="actor-title">3. Risk Engine</text>
+          <text x="12" y="36" class="actor-sub">Persistency Calculator</text>
+        </g>
+        <line x1="535" y1="65" x2="535" y2="650" class="seq-line"/>
+
+        <!-- Actor 4: Gupshup API -->
+        <g transform="translate(660, 20)">
+          <rect width="170" height="45" rx="6" fill="#16a34a"/>
+          <text x="12" y="22" class="actor-title">4. Gupshup WhatsApp</text>
+          <text x="12" y="36" class="actor-sub">Template Gateway</text>
+        </g>
+        <line x1="745" y1="65" x2="745" y2="650" class="seq-line"/>
+
+        <!-- Actor 5: Customer -->
+        <g transform="translate(870, 20)">
+          <rect width="170" height="45" rx="6" fill="#7c3aed"/>
+          <text x="12" y="22" class="actor-title">5. Policyholder</text>
+          <text x="12" y="36" class="actor-sub">WhatsApp Client App</text>
+        </g>
+        <line x1="955" y1="65" x2="955" y2="650" class="seq-line"/>
+
+        <!-- STEP 1: CRON triggers scan -->
+        <path d="M 115 110 L 325 110" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="130" y="102" class="msg-text">1. Trigger Daily Scan (`0 8 * * *`)</text>
+
+        <!-- STEP 2: Query Expiring Policies -->
+        <rect x="315" y="125" width="20" height="80" rx="3" fill="#bfdbfe"/>
+        <path d="M 335 140 L 535 140" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="345" y="132" class="msg-text">2. Calculate Lapse Risk &amp; Grace Expiry</text>
+
+        <!-- STEP 3: Return Risk Scores -->
+        <path d="M 535 180 L 335 180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+        <text x="350" y="172" class="msg-text">3. Risk Scores (HIGH / MED / LOW)</text>
+
+        <!-- STEP 4: Call Gupshup API -->
+        <path d="M 335 240 L 745 240" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="350" y="232" class="msg-text">4. HTTP POST `/send-whatsapp-reminder` (Multi-lingual Template + Payment Link)</text>
+
+        <!-- STEP 5: Gupshup sends WhatsApp message to Customer -->
+        <path d="M 745 300 L 955 300" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="755" y="292" class="msg-text">5. WhatsApp Notification with 1-Click UPI Payment Button</text>
+
+        <!-- NOTE: Customer Interaction -->
+        <rect x="880" y="325" width="150" height="40" rx="6" class="note-box"/>
+        <text x="890" y="342" class="note-text">Customer opens link</text>
+        <text x="890" y="356" class="note-text">&amp; pays via UPI / Card</text>
+
+        <!-- STEP 6: Webhook Callback from Gateway -->
+        <path d="M 955 410 L 325 410" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="450" y="402" class="msg-text" fill="#16a34a">6. Payment Success Webhook Callback (`payment.completed`)</text>
+
+        <!-- STEP 7: Update Policy Status in DB -->
+        <rect x="315" y="430" width="20" height="90" rx="3" fill="#bbf7d0"/>
+        <path d="M 335 450 L 535 450" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="345" y="442" class="msg-text">7. Update Policy Status -&gt; `ACTIVE` &amp; Set `nextRenewalDate` +1 Year</text>
+
+        <!-- STEP 8: Auto Create Next Year Commission Record -->
+        <path d="M 335 500 L 535 500" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="345" y="492" class="msg-text">8. Auto-Generate Expected Renewal Commission Record</text>
+
+        <!-- STEP 9: Confirmation WhatsApp Message -->
+        <path d="M 325 560 L 955 560" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="450" y="552" class="msg-text" fill="#16a34a">9. Send Renewal Policy Certificate &amp; Digital Receipt via WhatsApp</text>
+      </svg>
+    </div>
+
+    <footer>
+      InsureCRM Renewal & WhatsApp Sequence Diagram • Generated using `diagram-design` skill
+    </footer>
+  </div>
+</body>
+</html>

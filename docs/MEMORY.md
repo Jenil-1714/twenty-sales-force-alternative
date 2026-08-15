@@ -20,6 +20,7 @@
 | **Phase 2** | Logic Functions, Automations & Compliance Integrations | [`docs/phase-2-logic-functions.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-2-logic-functions.md) | ✅ Complete |
 | **Phase 3** | Front Components, Micro-Frontends & UI Dashboards | [`docs/phase-3-front-components.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-3-front-components.md) | ✅ Complete |
 | **Phase 4** | Advanced Workflows, Indian Localization & Compliance | [`docs/phase-4-workflows-and-i18n.md`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/phase-4-workflows-and-i18n.md) | ✅ Complete |
+| **Diagrams** | Architecture, ER, State Machine & Sequence Diagrams | [`docs/diagrams/index.html`](file:///Users/jenu/Desktop/projects/my-products/Build-10x-Version/twenty-sales-force-alternative/docs/diagrams/index.html) | ✅ Complete |
 
 ---
 

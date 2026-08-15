@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsureCRM — Entity Relationship & Data Model Diagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text-main); padding: 40px 24px; line-height: 1.5; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    header { margin-bottom: 32px; border-bottom: 1px solid var(--surface-border); padding-bottom: 20px; }
+    .badge { display: inline-block; background: var(--primary-light); color: var(--primary); font-weight: 600; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid #bfdbfe; margin-bottom: 12px; }
+    h1 { font-size: 28px; font-weight: 700; color: var(--text-main); letter-spacing: -0.02em; }
+    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 6px; }
+
+    .canvas-card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+    svg { width: 100%; height: auto; display: block; }
+    
+    .entity-header { font-size: 14px; font-weight: 700; fill: #ffffff; }
+    .field-name { font-size: 11px; font-weight: 600; fill: #1e293b; }
+    .field-type { font-size: 10px; fill: #64748b; }
+    .pk { font-size: 9px; font-weight: 700; fill: #d97706; }
+    .fk { font-size: 9px; font-weight: 700; fill: #2563eb; }
+    .rel-line { stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 4 4; }
+    .rel-label { font-size: 10px; font-weight: 700; fill: #475569; background: white; }
+
+    footer { margin-top: 32px; text-align: center; color: var(--text-muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">ER & DATA MODEL</span>
+      <h1>InsureCRM Entity Relationship & Data Model Diagram</h1>
+      <p class="subtitle">Complete schema mapping of 7 custom entities, 15 person extended fields, and relational links</p>
+    </header>
+
+    <div class="canvas-card">
+      <svg viewBox="0 0 1150 780" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Relationship Lines -->
+        <!-- Insurer -> InsuranceProduct -->
+        <path d="M 180 180 L 360 180" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="250" y="172" class="rel-label">1 : N</text>
+
+        <!-- Insurer -> Policy -->
+        <path d="M 180 220 L 260 220 L 260 400 L 360 400" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+        <!-- InsuranceProduct -> Policy -->
+        <path d="M 520 220 L 520 340" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="530" y="280" class="rel-label">1 : N</text>
+
+        <!-- Person -> Policy -->
+        <path d="M 760 180 L 680 180 L 680 380 L 520 380" stroke="#2563eb" stroke-width="2"/>
+        <text x="690" y="270" class="rel-label">1 : N (Policyholder / POSP Agent)</text>
+
+        <!-- Policy -> Commission -->
+        <path d="M 360 460 L 200 460" stroke="#2563eb" stroke-width="2"/>
+        <text x="260" y="452" class="rel-label">1 : N</text>
+
+        <!-- Policy -> Claim -->
+        <path d="M 520 490 L 520 580" stroke="#2563eb" stroke-width="2"/>
+        <text x="530" y="535" class="rel-label">1 : N</text>
+
+        <!-- Person -> KYCRecord -->
+        <path d="M 840 250 L 840 340" stroke="#2563eb" stroke-width="2"/>
+        <text x="850" y="295" class="rel-label">1 : 1</text>
+
+        <!-- FamilyGroup -> Person -->
+        <path d="M 940 430 L 940 250" stroke="#2563eb" stroke-width="2"/>
+        <text x="950" y="340" class="rel-label">1 : N (Household)</text>
+
+        <!-- Arrowhead Marker -->
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb" />
+          </marker>
+        </defs>
+
+        <!-- ENTITY 1: Insurer -->
+        <g transform="translate(20, 80)">
+          <rect width="160" height="200" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect width="160" height="32" rx="8" fill="#1e293b"/>
+          <text x="12" y="21" class="entity-header">Insurer</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan></text>
+          <text x="12" y="64" class="field-type">UUID</text>
+          
+          <text x="12" y="86" class="field-name">name</text>
+          <text x="12" y="100" class="field-type">TEXT (e.g. HDFC ERGO)</text>
+
+          <text x="12" y="122" class="field-name">irdaiLicenseNumber</text>
+          <text x="12" y="136" class="field-type">TEXT (IRDAI/125)</text>
+
+          <text x="12" y="158" class="field-name">category</text>
+          <text x="12" y="172" class="field-type">SELECT (LIFE/HEALTH/GEN)</text>
+        </g>
+
+        <!-- ENTITY 2: InsuranceProduct -->
+        <g transform="translate(360, 80)">
+          <rect width="160" height="220" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect width="160" height="32" rx="8" fill="#2563eb"/>
+          <text x="12" y="21" class="entity-header">InsuranceProduct</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan></text>
+
+          <text x="12" y="74" class="field-name">insurerId <tspan class="fk">FK</tspan></text>
+          <text x="12" y="88" class="field-type">RELATION -&gt; Insurer</text>
+          
+          <text x="12" y="110" class="field-name">productName</text>
+          <text x="12" y="124" class="field-type">TEXT (Optima Secure)</text>
+
+          <text x="12" y="146" class="field-name">category / subCategory</text>
+          <text x="12" y="160" class="field-type">SELECT (HEALTH/TERM)</text>
+
+          <text x="12" y="182" class="field-name">firstYearCommissionRate</text>
+          <text x="12" y="196" class="field-type">NUMERIC (%)</text>
+        </g>
+
+        <!-- ENTITY 3: Person (Extended) -->
+        <g transform="translate(760, 40)">
+          <rect width="180" height="210" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+          <rect width="180" height="32" rx="8" fill="#0284c7"/>
+          <text x="12" y="21" class="entity-header">Person (Twenty Standard)</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan> | name | email | phone</text>
+
+          <text x="12" y="74" font-size="10" font-weight="700" fill="#0369a1">+ 15 InsureCRM Fields:</text>
+          <text x="12" y="90" class="field-type">dateOfBirth | gender | smoker</text>
+          <text x="12" y="104" class="field-type">panNumber | aadhaarLastFour</text>
+          <text x="12" y="118" class="field-type">kycStatus (VERIFIED/PENDING)</text>
+          <text x="12" y="132" class="field-type">annualIncome | occupation</text>
+          <text x="12" y="146" class="field-type">preferredLanguage (HINDI/...) </text>
+          <text x="12" y="160" class="field-type">communicationPref (WHATSAPP)</text>
+          <text x="12" y="174" class="field-type">dpdpConsentStatus | consentDate</text>
+          <text x="12" y="188" class="field-name">familyGroupId <tspan class="fk">FK</tspan></text>
+        </g>
+
+        <!-- ENTITY 4: Policy -->
+        <g transform="translate(360, 340)">
+          <rect width="160" height="240" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+          <rect width="160" height="32" rx="8" fill="#16a34a"/>
+          <text x="12" y="21" class="entity-header">Policy (Core Pivot)</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan></text>
+
+          <text x="12" y="70" class="field-name">policyNumber</text>
+          <text x="12" y="84" class="field-type">TEXT (POL-992019)</text>
+
+          <text x="12" y="104" class="field-name">insurerId / productId <tspan class="fk">FK</tspan></text>
+          <text x="12" y="124" class="field-name">customerId / pospAgentId <tspan class="fk">FK</tspan></text>
+
+          <text x="12" y="146" class="field-name">sumAssured / premium</text>
+          <text x="12" y="160" class="field-type">CURRENCY (INR)</text>
+
+          <text x="12" y="180" class="field-name">status (11 Stages)</text>
+          <text x="12" y="194" class="field-type">SELECT (ACTIVE/LAPSED)</text>
+
+          <text x="12" y="214" class="field-name">policyStartDate / expiryDate</text>
+        </g>
+
+        <!-- ENTITY 5: Commission -->
+        <g transform="translate(20, 420)">
+          <rect width="180" height="180" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect width="180" height="32" rx="8" fill="#d97706"/>
+          <text x="12" y="21" class="entity-header">Commission</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan> | policyId <tspan class="fk">FK</tspan></text>
+          
+          <text x="12" y="74" class="field-name">commissionType</text>
+          <text x="12" y="88" class="field-type">SELECT (FIRST_YEAR/RENEWAL)</text>
+
+          <text x="12" y="110" class="field-name">expectedAmount | receivedAmount</text>
+          <text x="12" y="124" class="field-type">CURRENCY (INR)</text>
+
+          <text x="12" y="146" class="field-name">varianceStatus</text>
+          <text x="12" y="160" class="field-type">SELECT (MATCH/SHORTFALL)</text>
+        </g>
+
+        <!-- ENTITY 6: Claim -->
+        <g transform="translate(360, 600)">
+          <rect width="180" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect width="180" height="32" rx="8" fill="#dc2626"/>
+          <text x="12" y="21" class="entity-header">Claim</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan> | policyId <tspan class="fk">FK</tspan> | claimantId <tspan class="fk">FK</tspan></text>
+          
+          <text x="12" y="74" class="field-name">claimNumber | claimType</text>
+          <text x="12" y="88" class="field-type">TEXT | SELECT (HEALTH/DEATH)</text>
+
+          <text x="12" y="110" class="field-name">claimAmount | approvedAmount</text>
+          <text x="12" y="124" class="field-name">status (8 Stages)</text>
+        </g>
+
+        <!-- ENTITY 7: KYCRecord -->
+        <g transform="translate(760, 340)">
+          <rect width="180" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect width="180" height="32" rx="8" fill="#475569"/>
+          <text x="12" y="21" class="entity-header">KYCRecord</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan> | personId <tspan class="fk">FK</tspan></text>
+          
+          <text x="12" y="74" class="field-name">kycType (AADHAAR/PAN/CKYC)</text>
+          <text x="12" y="96" class="field-name">verificationStatus (VERIFIED)</text>
+          <text x="12" y="118" class="field-name">ckycNumber | ckycDate</text>
+        </g>
+
+        <!-- ENTITY 8: FamilyGroup -->
+        <g transform="translate(820, 540)">
+          <rect width="180" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <rect width="180" height="32" rx="8" fill="#7c3aed"/>
+          <text x="12" y="21" class="entity-header">FamilyGroup</text>
+          
+          <text x="12" y="50" class="field-name">id <tspan class="pk">PK</tspan> | familyName</text>
+          <text x="12" y="74" class="field-name">headOfFamilyId <tspan class="fk">FK</tspan></text>
+          <text x="12" y="96" class="field-name">totalAnnualIncome (INR)</text>
+          <text x="12" y="118" class="field-name">totalCoverLife | totalCoverHealth</text>
+        </g>
+      </svg>
+    </div>
+
+    <footer>
+      InsureCRM Data Model & ER Diagram • Generated using `diagram-design` skill
+    </footer>
+  </div>
+</body>
+</html>

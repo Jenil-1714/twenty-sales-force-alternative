@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsureCRM — System Architecture & Component Topology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --primary-border: #bfdbfe;
+      --success: #16a34a;
+      --success-light: #f0fdf4;
+      --warning: #d97706;
+      --warning-light: #fffbeb;
+      --purple: #9333ea;
+      --purple-light: #faf5ff;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text-main); padding: 40px 24px; line-height: 1.5; }
+    .container { max-width: 1280px; margin: 0 auto; }
+    header { margin-bottom: 32px; border-bottom: 1px solid var(--surface-border); padding-bottom: 20px; }
+    .badge { display: inline-block; background: var(--primary-light); color: var(--primary); font-weight: 600; font-size: 12px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--primary-border); margin-bottom: 12px; }
+    h1 { font-size: 28px; font-weight: 700; color: var(--text-main); letter-spacing: -0.02em; }
+    p.subtitle { color: var(--text-muted); font-size: 15px; margin-top: 6px; }
+
+    /* SVG Canvas styling */
+    .canvas-card { background: var(--surface); border: 1px solid var(--surface-border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+    svg { width: 100%; height: auto; display: block; }
+    
+    .node-title { font-size: 14px; font-weight: 700; fill: #0f172a; }
+    .node-desc { font-size: 11px; fill: #64748b; }
+    .node-tag { font-size: 10px; font-weight: 600; fill: #2563eb; }
+    .layer-label { font-size: 13px; font-weight: 700; fill: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    footer { margin-top: 32px; text-align: center; color: var(--text-muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">INSURECRM ARCHITECTURE</span>
+      <h1>InsureCRM System Component Topology & Layer Architecture</h1>
+      <p class="subtitle">AI-Native Insurance Growth OS built on Twenty CRM Monorepo Architecture (`packages/insure-crm-app/`)</p>
+    </header>
+
+    <div class="canvas-card">
+      <svg viewBox="0 0 1100 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background Grid Layers -->
+        <!-- Layer 1: Front Components -->
+        <rect x="20" y="20" width="1060" height="150" rx="12" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <text x="40" y="45" class="layer-label">Layer 1: Micro-Frontend React Components (Twenty SDK Front Components)</text>
+
+        <!-- Layer 1 Nodes -->
+        <g transform="translate(40, 60)">
+          <rect width="190" height="90" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Renewal Drawer</text>
+          <text x="16" y="46" class="node-desc">Risk scoring & 1-click</text>
+          <text x="16" y="60" class="node-desc">WhatsApp payment links</text>
+          <text x="16" y="78" class="node-tag">FRONT COMPONENT</text>
+        </g>
+
+        <g transform="translate(245, 60)">
+          <rect width="190" height="90" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Reconciliation View</text>
+          <text x="16" y="46" class="node-desc">Payout statement upload &</text>
+          <text x="16" y="60" class="node-desc">shortfall variance workspace</text>
+          <text x="16" y="78" class="node-tag">FRONT COMPONENT</text>
+        </g>
+
+        <g transform="translate(450, 60)">
+          <rect width="190" height="90" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Family Visualizer</text>
+          <text x="16" y="46" class="node-desc">Household grouping &</text>
+          <text x="16" y="60" class="node-desc">coverage gap recommendations</text>
+          <text x="16" y="78" class="node-tag">FRONT COMPONENT</text>
+        </g>
+
+        <g transform="translate(655, 60)">
+          <rect width="190" height="90" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Quote Comparator</text>
+          <text x="16" y="46" class="node-desc">Side-by-side Life, Health</text>
+          <text x="16" y="60" class="node-desc">& Motor product matrix</text>
+          <text x="16" y="78" class="node-tag">FRONT COMPONENT</text>
+        </g>
+
+        <g transform="translate(860, 60)">
+          <rect width="190" height="90" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Claim Checklist</text>
+          <text x="16" y="46" class="node-desc">Document requirements,</text>
+          <text x="16" y="60" class="node-desc">survey status & TAT stepper</text>
+          <text x="16" y="78" class="node-tag">FRONT COMPONENT</text>
+        </g>
+
+        <!-- Layer 2: Logic Functions & Triggers -->
+        <rect x="20" y="200" width="1060" height="190" rx="12" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+        <text x="40" y="225" class="layer-label" fill="#1e40af">Layer 2: Logic Functions & Compliance Automation Engines (`defineLogicFunction`)</text>
+
+        <g transform="translate(40, 240)">
+          <rect width="190" height="135" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="16" y="26" class="node-title">check-expiring-policies</text>
+          <text x="16" y="44" class="node-desc">CRON: `0 8 * * *` (Daily 8 AM)</text>
+          <text x="16" y="60" class="node-desc">Scans 60/30/15/7 day lapses</text>
+          <text x="16" y="76" class="node-desc">Calculates renewal risk score</text>
+          <rect x="16" y="94" width="85" height="18" rx="4" fill="#dbeafe"/>
+          <text x="22" y="107" font-size="9" font-weight="700" fill="#1e40af">CRON TRIGGER</text>
+        </g>
+
+        <g transform="translate(245, 240)">
+          <rect width="190" height="135" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="16" y="26" class="node-title">send-whatsapp-reminder</text>
+          <text x="16" y="44" class="node-desc">HTTP POST endpoint</text>
+          <text x="16" y="60" class="node-desc">Gupshup WhatsApp API</text>
+          <text x="16" y="76" class="node-desc">Multi-lingual template engine</text>
+          <rect x="16" y="94" width="85" height="18" rx="4" fill="#dbeafe"/>
+          <text x="22" y="107" font-size="9" font-weight="700" fill="#1e40af">HTTP ROUTE</text>
+        </g>
+
+        <g transform="translate(450, 240)">
+          <rect width="190" height="135" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="16" y="26" class="node-title">reconcile-commission</text>
+          <text x="16" y="44" class="node-desc">Statement matcher</text>
+          <text x="16" y="60" class="node-desc">Computes 194D TDS (5%)</text>
+          <text x="16" y="76" class="node-desc">& GST (18%) tax variances</text>
+          <rect x="16" y="94" width="85" height="18" rx="4" fill="#dbeafe"/>
+          <text x="22" y="107" font-size="9" font-weight="700" fill="#1e40af">HTTP ROUTE</text>
+        </g>
+
+        <g transform="translate(655, 240)">
+          <rect width="190" height="135" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="16" y="26" class="node-title">flag-commission-discrepancy</text>
+          <text x="16" y="44" class="node-desc">DB Event: `commission.created`</text>
+          <text x="16" y="60" class="node-desc">Flags shortfall & excess</text>
+          <text x="16" y="76" class="node-desc">Alerts brokerage back-office</text>
+          <rect x="16" y="94" width="115" height="18" rx="4" fill="#fef3c7"/>
+          <text x="22" y="107" font-size="9" font-weight="700" fill="#92400e">DATABASE TRIGGER</text>
+        </g>
+
+        <g transform="translate(860, 240)">
+          <rect width="190" height="135" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+          <text x="16" y="26" class="node-title">auto-claim-status-notifier</text>
+          <text x="16" y="44" class="node-desc">DB Event: `claim.updated`</text>
+          <text x="16" y="60" class="node-desc">Sends real-time claimant</text>
+          <text x="16" y="76" class="node-desc">WhatsApp status updates</text>
+          <rect x="16" y="94" width="115" height="18" rx="4" fill="#fef3c7"/>
+          <text x="22" y="107" font-size="9" font-weight="700" fill="#92400e">DATABASE TRIGGER</text>
+        </g>
+
+        <!-- Layer 3: Custom Data Model & Entities -->
+        <rect x="20" y="420" width="1060" height="200" rx="12" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+        <text x="40" y="445" class="layer-label" fill="#166534">Layer 3: InsureCRM Custom Data Model (7 Custom Objects & 15 Person Extensions)</text>
+
+        <!-- Objects Grid -->
+        <g transform="translate(40, 460)">
+          <rect width="140" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">insurer</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">45+ Indian Insurers</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">CSR & Portal Links</text>
+        </g>
+
+        <g transform="translate(190, 460)">
+          <rect width="140" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">insuranceProduct</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">62+ Product Catalog</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">FY/Renewal Rates</text>
+        </g>
+
+        <g transform="translate(340, 460)">
+          <rect width="140" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">policy</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">27 Policy Fields</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">11 Status Stages</text>
+        </g>
+
+        <g transform="translate(490, 460)">
+          <rect width="140" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">commission</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">Statement Payouts</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">TDS & GST Reconciliation</text>
+        </g>
+
+        <g transform="translate(640, 460)">
+          <rect width="140" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">claim</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">Intimation & Survey</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">Document Stepper</text>
+        </g>
+
+        <g transform="translate(790, 460)">
+          <rect width="140" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">kycRecord</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">CKYC & eKYC Lookup</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">DPDP Audit Log</text>
+        </g>
+
+        <g transform="translate(940, 460)">
+          <rect width="120" height="70" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="12" y="24" font-size="13" font-weight="700" fill="#0f172a">familyGroup</text>
+          <text x="12" y="40" font-size="10" fill="#64748b">Household Grouping</text>
+          <text x="12" y="54" font-size="10" fill="#16a34a">Coverage Gaps</text>
+        </g>
+
+        <!-- Extended Person Fields Ribbon -->
+        <g transform="translate(40, 545)">
+          <rect width="1020" height="55" rx="6" fill="#ffffff" stroke="#bbf7d0" stroke-width="1.5"/>
+          <text x="16" y="22" font-size="11" font-weight="700" fill="#15803d">15 Extended Person Fields (Twenty CRM Standard Person Entity Extensions):</text>
+          <text x="16" y="40" font-size="10" fill="#475569">DOB • Gender • Marital Status • Annual Income • Occupation • Smoker Status • PAN Number • Aadhaar Last 4 • KYC Status • Preferred Language • Communication Pref • PIN Code • Customer Since • DPDP Consent • DPDP Consent Date</text>
+        </g>
+
+        <!-- Layer 4: Infrastructure & Integrations -->
+        <rect x="20" y="640" width="1060" height="150" rx="12" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1.5"/>
+        <text x="40" y="665" class="layer-label" fill="#6b21a8">Layer 4: Twenty Core Engine, Tax & Indian API Integrations</text>
+
+        <g transform="translate(40, 680)">
+          <rect width="240" height="90" rx="8" fill="#ffffff" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Twenty Server & GraphQL API</text>
+          <text x="16" y="46" class="node-desc">Monorepo Host Engine</text>
+          <text x="16" y="60" class="node-desc">Metadata & Client SDK (`twenty-sdk`)</text>
+          <text x="16" y="78" font-size="10" font-weight="600" fill="#7e22ce">TWENTY CRM CORE</text>
+        </g>
+
+        <g transform="translate(300, 680)">
+          <rect width="240" height="90" rx="8" fill="#ffffff" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">Gupshup WhatsApp Business API</text>
+          <text x="16" y="46" class="node-desc">1-Click Renewal Payment Links</text>
+          <text x="16" y="60" class="node-desc">Hindi/Tamil/Telugu/Marathi/Gujarati</text>
+          <text x="16" y="78" font-size="10" font-weight="600" fill="#7e22ce">EXTERNAL API</text>
+        </g>
+
+        <g transform="translate(560, 680)">
+          <rect width="240" height="90" rx="8" fill="#ffffff" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">GST & Section 194D Tax Calculator</text>
+          <text x="16" y="46" class="node-desc">Individual TDS (5%) / Corp TDS (10%)</text>
+          <text x="16" y="60" class="node-desc">CGST + SGST / IGST (18%)</text>
+          <text x="16" y="78" font-size="10" font-weight="600" fill="#7e22ce">COMPLIANCE ENGINE</text>
+        </g>
+
+        <g transform="translate(820, 680)">
+          <rect width="240" height="90" rx="8" fill="#ffffff" stroke="#a855f7" stroke-width="1.5"/>
+          <text x="16" y="28" class="node-title">IRDAI Persistency Engine</text>
+          <text x="16" y="46" class="node-desc">13th, 25th, 37th & 61st Month</text>
+          <text x="16" y="60" class="node-desc">Quarterly Return Formatter</text>
+          <text x="16" y="78" font-size="10" font-weight="600" fill="#7e22ce">REGULATORY ENGINE</text>
+        </g>
+      </svg>
+    </div>
+
+    <footer>
+      InsureCRM Architecture & Architecture Layer Diagram • Generated using `diagram-design` skill
+    </footer>
+  </div>
+</body>
+</html>
