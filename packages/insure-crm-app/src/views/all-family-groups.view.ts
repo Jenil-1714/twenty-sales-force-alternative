@@ -1,17 +1,18 @@
 import { defineView } from 'twenty-sdk/define';
+import * as U from '../constants/universal-identifiers';
 
-export const VIEW_ALL_FAMILY_GROUPS_ID = 'b4d64380-60b1-4d76-b608-251f0436d41f';
+export const VIEW_ALL_FAMILY_GROUPS_ID = U.VIEW_FAMILY_LIST_UNIVERSAL_IDENTIFIER;
 
 export default defineView({
   universalIdentifier: VIEW_ALL_FAMILY_GROUPS_ID,
   name: 'All Family Groups',
-  objectUniversalIdentifier: '36881cba-68db-4171-8bc6-67a034298194',
-  icon: 'IconList',
+  objectUniversalIdentifier: U.FAMILY_GROUP_OBJECT_UNIVERSAL_IDENTIFIER,
+  icon: 'IconUsers',
   position: 0,
   fields: [
-    { universalIdentifier: 'dffb94f6-8d14-419b-ba2d-b1be04653dd7', fieldMetadataUniversalIdentifier: '286d5258-305f-4a00-ba5d-e19c0179a613', position: 0, isVisible: true, size: 200 },
-    { universalIdentifier: '7876a3cc-cbfb-4b2a-8c76-2f520be1e793', fieldMetadataUniversalIdentifier: '45d42398-32f2-49da-9c4c-473d0607c3ce', position: 1, isVisible: true, size: 200 },
-    { universalIdentifier: 'a4dbf068-d6fb-4050-8b1b-7a307c9b0e27', fieldMetadataUniversalIdentifier: '3c8c7f76-ebef-48cd-b141-f761d719e742', position: 2, isVisible: true, size: 200 },
-    { universalIdentifier: 'ca95232b-31da-45e0-8197-2debeaa9c262', fieldMetadataUniversalIdentifier: '144cc2b6-5d25-4122-83b4-82f5b5c92c81', position: 3, isVisible: true, size: 200 },
+    { universalIdentifier: '7bcfa431-2277-5d96-b6f1-381ea5a5be1a', fieldMetadataUniversalIdentifier: U.FAMILY_GROUP_GROUP_NAME_FIELD_UNIVERSAL_IDENTIFIER, position: 0, isVisible: true, size: 200 },
+    { universalIdentifier: '7bcfa431-2277-5d96-b6f1-381ea5a5be1b', fieldMetadataUniversalIdentifier: 'b844482e-e2e3-4397-8230-b4d4df8b8636', position: 1, isVisible: true, size: 200 },
+    { universalIdentifier: '7bcfa431-2277-5d96-b6f1-381ea5a5be1c', fieldMetadataUniversalIdentifier: '5019baa4-1055-41ce-90dc-3f5dc43349be', position: 2, isVisible: true, size: 200 },
+    { universalIdentifier: '7bcfa431-2277-5d96-b6f1-381ea5a5be1d', fieldMetadataUniversalIdentifier: 'edd14d2c-5001-480a-865e-0e9c7d3cad08', position: 3, isVisible: true, size: 200 },
   ],
 });
